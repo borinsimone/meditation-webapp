@@ -17,7 +17,7 @@ function Menu() {
   const [previousVolume, setPreviousVolume] = useState(
     () => {
       const data = localStorage.getItem("previousVolume");
-      if (data == String) {
+      if (data !== null) {
         const parsedData = JSON.parse(data);
         return parsedData;
       } else {

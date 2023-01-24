@@ -47,7 +47,7 @@ const ContextProvider = ({ children }) => {
   const [bgSoundVolume, setBgSoundVolume] = useState(
     () => {
       const data = localStorage.getItem("bgSoundVolume");
-      if (data == String) {
+      if (data !== null) {
         const parsedData = JSON.parse(data);
         return parsedData;
       } else {
