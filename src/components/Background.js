@@ -119,7 +119,7 @@ function Background() {
       <img
         src={require("../assets/video/rain.gif")}
         alt=""
-        className={`gif ${
+        className={`h-full w-full fixed  ${
           background === "rain"
             ? "z-0 opacity-1"
             : "-z-50 opacity-0"
@@ -128,7 +128,7 @@ function Background() {
       <img
         src={require("../assets/video/beach.gif")}
         alt=""
-        className={`gif ${
+        className={`h-full w-full fixed ${
           background === "beach"
             ? "z-0 opacity-1"
             : "-z-50 opacity-0"
