@@ -22,8 +22,17 @@ function App() {
     isTimerOpen,
     setIsTimerOpen,
   } = useGlobalContext();
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty(
+    "--vh",
+    `${vh}px`
+  );
+  console.log(window.innerHeight);
+
   return (
-    <div className="App relative h-screen w-screen overflow-hidden">
+    <div
+      className={`App relative   w-screen overflow-hidden`}
+    >
       <LandingQuote />
 
       <Background />

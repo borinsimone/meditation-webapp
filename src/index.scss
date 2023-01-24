@@ -2,23 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-// .App {
-//   background: -moz-radial-gradient(
-//     circle,
-//     rgb(107, 47, 107) 0%,
-//     rgba(30, 30, 30, 1) 100%
-//   );
-//   background: -webkit-radial-gradient(
-//     circle,
-//     rgb(107, 47, 107) 0%,
-//     rgba(30, 30, 30, 1) 100%
-//   );
-//   background: radial-gradient(
-//     circle,
-//     rgb(194, 91, 194) 0%,
-//     rgb(123, 36, 123) 100%
-//   );
-// }
+.App {
+  height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+  height: calc(var(--vh, 1vh) * 100);
+}
 video {
   object-fit: cover;
   width: 100vw;
