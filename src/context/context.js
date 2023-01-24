@@ -40,7 +40,7 @@ const ContextProvider = ({ children }) => {
     if (data !== "undefined") {
       return data;
     } else {
-      return "";
+      return "beach";
     }
   });
   // const [bgSoundVolume, setBgSoundVolume] = useState(0.2);
