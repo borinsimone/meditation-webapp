@@ -1,23 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import Menu from "./components/Menu";
+import SignIn from "./components/SignIn";
+import Meditation from "./components/Timer";
+import LandingQuote from "./components/LandingQuote";
+import meditationLogo from "./assets/zen-meditation.png";
+import beach from "./assets/video/beach.mp4";
+import rain from "./assets/video/rain.mp4";
+import Background from "./components/Background";
+import { useState } from "react";
+import { useGlobalContext } from "./context/context";
+import { GiLotus } from "react-icons/gi";
 
 function App() {
+  const {
+    isMenuOpen,
+    setIsMenuOpen,
+    toggleMenu,
+    isSigninOpen,
+    setIsSigninOpen,
+    toggleSignin,
+    isTimerOpen,
+    setIsTimerOpen,
+  } = useGlobalContext();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App relative h-screen w-screen overflow-hidden">
+      <LandingQuote />
+
+      <Background />
+      <Menu />
+      <div className="title text-white text-2xl w-full text-center absolute top-[10vh]">
+        Your journey start from you
+      </div>
+      <img
+        src={meditationLogo}
+        className="absolute top-[30%] md:top-[20%] left-[calc(50%-200px)] h-[400px]"
+        alt=""
+      />
+      <div
+        className={`main-icon absolute bottom-[10vh] left-0 w-full grid place-content-center  `}
+      >
+        <GiLotus
+          className=" text-[70px] md:text-[100px] text-white cursor-pointer select-none"
+          onClick={() => {
+            setIsTimerOpen(!isTimerOpen);
+            setIsMenuOpen(false);
+            setIsSigninOpen(false);
+          }}
+        />
+      </div>
+      <Navbar />
+      <SignIn />
+      <Meditation />
     </div>
   );
 }

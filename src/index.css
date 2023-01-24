@@ -1,13 +1,50 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.gif {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: 0;
 }
+
+.quote-container {
+  background: -webkit-gradient(linear, left bottom, left top, from(#475569), color-stop(50%, #96ccdb), to(#475569));
+  background: linear-gradient(0deg, #475569 0%, #96ccdb 50%, #475569 100%);
+}
+
+.utility-shadow {
+  background: #211721;
+  background: -webkit-gradient(linear, left bottom, left top, from(#211721), color-stop(50%, #211721), to(rgba(255, 255, 255, 0)));
+  background: linear-gradient(0deg, #211721 0%, #211721 50%, rgba(255, 255, 255, 0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#211721",endColorstr="#ffffff",GradientType=1);
+}
+
+.sign-in {
+  -webkit-box-shadow: 0px 0px 28px 14px #00000073;
+  box-shadow: 0px 0px 28px 14px #00000073;
+}
+
+.timer-container {
+  -webkit-box-shadow: 0px 0px 28px 14px #00000073;
+  box-shadow: 0px 0px 28px 14px #00000073;
+}
+
+button {
+  text-transform: capitalize;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+/*# sourceMappingURL=index.css.map */
