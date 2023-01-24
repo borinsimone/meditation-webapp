@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c2c1d4f6.css",
+    "main.js": "/static/js/main.be998341.js",
+    "static/media/rain.mp3": "/static/media/rain.e1d6cbcef9aaeded1a0d.mp3",
+    "static/media/beach.mp3": "/static/media/beach.d1908973f253638af907.mp3",
+    "static/media/beach.gif": "/static/media/beach.7b3bb5d2d54ce311c0cd.gif",
+    "static/media/rain.gif": "/static/media/rain.c468abf00a09bf347b85.gif",
+    "static/media/beach.mp4": "/static/media/beach.d6f3fec599dca0237598.mp4",
+    "static/media/rain.mp4": "/static/media/rain.cdc4e810c574a74ae834.mp4",
+    "static/media/end_meditation.mp3": "/static/media/end_meditation.d209942d44ec04f73f3f.mp3",
+    "static/media/zen-meditation.png": "/static/media/zen-meditation.b3ab2d6c4ade566b6b9d.png",
+    "index.html": "/index.html",
+    "main.c2c1d4f6.css.map": "/static/css/main.c2c1d4f6.css.map",
+    "main.be998341.js.map": "/static/js/main.be998341.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2c1d4f6.css",
+    "static/js/main.be998341.js"
+  ]
+}
