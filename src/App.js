@@ -28,6 +28,7 @@ function App() {
     `${vh}px`
   );
   console.log(window.innerHeight);
+  console.log(localStorage);
 
   return (
     <div

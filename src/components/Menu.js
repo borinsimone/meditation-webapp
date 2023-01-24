@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../context/context";
 import { GoUnmute, GoMute } from "react-icons/go";
 
@@ -14,7 +14,20 @@ function Menu() {
     isMuted,
     setIsMuted,
   } = useGlobalContext();
-  const [previousVolume, setPreviousVolume] = useState();
+  const [previousVolume, setPreviousVolume] = useState(
+    () => {
+      const data = localStorage.getItem("previousVolume");
+      if (data == String) {
+        const parsedData = JSON.parse(data);
+        return parsedData;
+      } else {
+        return 0.2;
+      }
+    }
+  );
+  useEffect(() => {
+    localStorage.setItem("previousVolume", previousVolume);
+  }, [previousVolume]);
   return (
     <div
       className={`bg-slate-600/80 w-screen h-[93vh] absolute duration-500 bottom-0 z-50 flex flex-col items-center p-10 text-white ${

@@ -37,7 +37,7 @@ const ContextProvider = ({ children }) => {
   // BACKGROUND CONTEXT
   const [background, setBackground] = useState(() => {
     const data = localStorage.getItem("background");
-    if (data !== "undefined") {
+    if (data !== null) {
       return data;
     } else {
       return "beach";
@@ -47,7 +47,7 @@ const ContextProvider = ({ children }) => {
   const [bgSoundVolume, setBgSoundVolume] = useState(
     () => {
       const data = localStorage.getItem("bgSoundVolume");
-      if (data !== "undefined") {
+      if (data == String) {
         const parsedData = JSON.parse(data);
         return parsedData;
       } else {
@@ -62,7 +62,7 @@ const ContextProvider = ({ children }) => {
   }, [bgSoundVolume]);
   const [isMuted, setIsMuted] = useState(() => {
     const data = localStorage.getItem("isMuted");
-    if (data !== "undefined") {
+    if (data !== null) {
       const parsedData = JSON.parse(data);
       return parsedData;
     } else {

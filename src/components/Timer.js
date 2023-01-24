@@ -37,7 +37,7 @@ function Timer() {
       const data = localStorage.getItem(
         "endMeditationSound"
       );
-      if (data !== "undefined") {
+      if (data !== null) {
         const parsedData = JSON.parse(data);
         return parsedData;
       } else {
