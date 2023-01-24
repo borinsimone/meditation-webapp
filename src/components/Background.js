@@ -108,12 +108,12 @@ function Background() {
   return (
     <div>
       <button
-        className="absolute top-20 h-20 w-20 bg-black z-50"
+        className="absolute top-20  w-24 bg-black z-50 text-white"
         onClick={() => {
-          console.log(localStorage.removeItem("list"));
+          localStorage.clear();
         }}
       >
-        mute
+        non toccare questo pulsante
       </button>
       {/* RAIN */}
       <img
