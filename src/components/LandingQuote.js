@@ -61,6 +61,7 @@ function LandingQuote() {
               setIsLandingOpen(false);
               setBackground(background);
               console.log(bgSoundVolume);
+              // document.body.requestFullscreen();
             }}
           >
             close this page

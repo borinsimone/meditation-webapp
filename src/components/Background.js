@@ -130,7 +130,7 @@ function Background() {
           localStorage.clear();
         }}
       >
-        non toccare questo pulsante
+        {rain.current ? rain.current.volume : ""}
       </button>
       {/* RAIN */}
       <img
