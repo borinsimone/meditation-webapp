@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/meditation-webapp/static/css/main.2aa9a501.css",
-    "main.js": "/meditation-webapp/static/js/main.ab4f3f69.js",
+    "main.js": "/meditation-webapp/static/js/main.e11baded.js",
     "static/media/rain.mp3": "/meditation-webapp/static/media/rain.e1d6cbcef9aaeded1a0d.mp3",
     "static/media/beach.mp3": "/meditation-webapp/static/media/beach.d1908973f253638af907.mp3",
     "static/media/beach.gif": "/meditation-webapp/static/media/beach.7b3bb5d2d54ce311c0cd.gif",
@@ -12,10 +12,10 @@
     "static/media/zen-meditation.png": "/meditation-webapp/static/media/zen-meditation.b3ab2d6c4ade566b6b9d.png",
     "index.html": "/meditation-webapp/index.html",
     "main.2aa9a501.css.map": "/meditation-webapp/static/css/main.2aa9a501.css.map",
-    "main.ab4f3f69.js.map": "/meditation-webapp/static/js/main.ab4f3f69.js.map"
+    "main.e11baded.js.map": "/meditation-webapp/static/js/main.e11baded.js.map"
   },
   "entrypoints": [
     "static/css/main.2aa9a501.css",
-    "static/js/main.ab4f3f69.js"
+    "static/js/main.e11baded.js"
   ]
 }
