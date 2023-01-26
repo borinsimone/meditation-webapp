@@ -207,6 +207,7 @@ function Menu() {
         {/* {bgSoundVolume} */}
       </div>
       <div className="test bg-green-500 mt-10">
+        {bgSoundVolume} <br />
         {navigator.userAgent}
       </div>
     </div>
