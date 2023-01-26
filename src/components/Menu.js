@@ -179,6 +179,11 @@ function Menu() {
           onChange={(event) => {
             setBgSoundVolume(event.target.value);
           }}
+          onTouchEnd={(event) => {
+            setBgSoundVolume(event.target.value);
+
+            console.log("ciao");
+          }}
           // onTouchEnd={sliderIos(TouchEvent)}
         />
         <div
