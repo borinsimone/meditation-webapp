@@ -13,6 +13,8 @@ function Background() {
     setIsBgRelated,
     isLandingOpen,
     setIsLandingOpen,
+    isMuted,
+    setIsMuted,
   } = useGlobalContext();
 
   const [currentBgSong, setCurrentBgSong] = useState("");
@@ -34,6 +36,21 @@ function Background() {
   // useEffect(() => {
   //   console.log("ciao");
   // }, [bgSong]);
+  useEffect(() => {
+    if (isMuted && isBgRelated && isLandingOpen === false) {
+      beach.current.pause();
+      rain.current.pause();
+      // rain.current.mute = false;
+      // beach.current.mute = false;
+    } else {
+      if (currentBgSong === "beach") {
+        beach.current.play();
+      }
+      if (currentBgSong === "rain") {
+        rain.current.play();
+      }
+    }
+  }, [isMuted]);
 
   useEffect(() => {
     if (isBgRelated && isLandingOpen === false) {

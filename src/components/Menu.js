@@ -168,18 +168,18 @@ function Menu() {
           step={0.01}
           // default={0.2}
           value={bgSoundVolume}
-          onBlur={(event) => {
-            setBgSoundVolume(event.target.value);
-            console.log("fire");
-          }}
-          onInput={(event) => {
-            console.log("ios");
-            setBgSoundVolume(event.target.value);
-          }}
+          // onBlur={(event) => {
+          //   setBgSoundVolume(event.target.value);
+          //   console.log("fire");
+          // }}
+          // onInput={(event) => {
+          //   console.log("ios");
+          //   setBgSoundVolume(event.target.value);
+          // }}
           onChange={(event) => {
             setBgSoundVolume(event.target.value);
           }}
-          onTouchEnd={sliderIos(TouchEvent)}
+          // onTouchEnd={sliderIos(TouchEvent)}
         />
         <div
           className="be-careful absolute  p-2 right-[10%] -bottom-10 bg-black 
@@ -191,14 +191,14 @@ function Menu() {
           onClick={() => {
             setIsMuted(!isMuted);
             if (isMuted === true) {
-              setPreviousVolume(bgSoundVolume);
-              setBgSoundVolume(0);
+              // setPreviousVolume(bgSoundVolume);
+              // setBgSoundVolume(0);
             } else {
-              setBgSoundVolume(previousVolume);
+              // setBgSoundVolume(previousVolume);
             }
           }}
         >
-          {bgSoundVolume === 0 ? (
+          {bgSoundVolume === 0 || isMuted ? (
             <GoMute className="text-2xl md:text-4xl" />
           ) : (
             <GoUnmute className="text-2xl md:text-4xl" />
