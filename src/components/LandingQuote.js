@@ -9,6 +9,8 @@ function LandingQuote() {
     bgSoundVolume,
     isLandingOpen,
     setIsLandingOpen,
+    isMuted,
+    bgSound,
   } = useGlobalContext();
   const url =
     // "https://api.api-ninjas.com/v1/quotes?category=inspirational";
@@ -61,6 +63,10 @@ function LandingQuote() {
               setIsLandingOpen(false);
               setBackground(background);
               console.log(bgSoundVolume);
+              if (!isMuted) {
+                bgSound.current.volume = bgSoundVolume;
+                bgSound.current.play();
+              }
               // document.body.requestFullscreen();
             }}
           >

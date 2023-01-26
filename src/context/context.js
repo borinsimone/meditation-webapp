@@ -57,7 +57,7 @@ const ContextProvider = ({ children }) => {
     // 0.2
   );
   useEffect(() => {
-    // localStorage.setItem("bgSoundVolume", bgSoundVolume);
+    localStorage.setItem("bgSoundVolume", bgSoundVolume);
     // console.log("suono cambia");
   }, [bgSoundVolume]);
   const [isMuted, setIsMuted] = useState(() => {
@@ -96,6 +96,7 @@ const ContextProvider = ({ children }) => {
   // });
 
   const [isBgRelated, setIsBgRelated] = useState(true);
+  const bgSound = useRef();
 
   const [isLandingOpen, setIsLandingOpen] = useState(true);
 
@@ -130,6 +131,7 @@ const ContextProvider = ({ children }) => {
         setIsMuted,
         isLandingOpen,
         setIsLandingOpen,
+        bgSound,
       }}
     >
       {children}

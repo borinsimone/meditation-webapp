@@ -15,6 +15,7 @@ function Background() {
     setIsLandingOpen,
     isMuted,
     setIsMuted,
+    bgSound,
   } = useGlobalContext();
 
   const [currentBgSong, setCurrentBgSong] = useState("");
@@ -38,88 +39,110 @@ function Background() {
   // }, [bgSong]);
   useEffect(() => {
     if (isMuted && isBgRelated && isLandingOpen === false) {
-      beach.current.pause();
-      rain.current.pause();
-      // rain.current.mute = false;
-      // beach.current.mute = false;
-    } else {
-      if (currentBgSong === "beach") {
-        beach.current.play();
-      }
-      if (currentBgSong === "rain") {
-        rain.current.play();
-      }
+      bgSound.current.pause();
+      //   beach.current.pause();
+      //   rain.current.pause();
+      //   // rain.current.mute = false;
+      //   // beach.current.mute = false;
+    }
+    if (
+      !isMuted &&
+      isBgRelated &&
+      isLandingOpen === false
+    ) {
+      bgSound.current.play();
+      //   if (currentBgSong === "beach") {
+      //     beach.current.play();
+      //   }
+      //   if (currentBgSong === "rain") {
+      //     rain.current.play();
+      // }
     }
   }, [isMuted]);
 
   useEffect(() => {
-    if (isBgRelated && isLandingOpen === false) {
-      if (background === "rain") {
-        rain.current.volume = bgSoundVolume;
-        rain.current.play();
-        if (currentBgSong === "beach") {
-          beach.current.pause();
-        }
-      }
-      if (background === "beach") {
-        beach.current.volume = bgSoundVolume;
-        beach.current.play();
-        if (currentBgSong === "rain") {
-          rain.current.pause();
-        }
-      }
+    console.log(bgSound.current.id);
+    if (
+      isBgRelated &&
+      !isLandingOpen &&
+      bgSound.current &&
+      bgSound.current.id === background
+    ) {
+      bgSound.current.load();
+      bgSound.current.volume = bgSoundVolume;
+
+      bgSound.current.play();
+      //   if (background === "rain") {
+      //     rain.current.volume = bgSoundVolume;
+      //     rain.current.play();
+      //     if (currentBgSong !== "beach") {
+      //       beach.current.pause();
+      //     }
+      //   }
+      //   if (background === "beach") {
+      //     beach.current.volume = bgSoundVolume;
+      //     beach.current.play();
+      //     if (currentBgSong !== "rain") {
+      //       rain.current.pause();
+      //     }
+      //   }
     }
     localStorage.setItem("background", background);
   }, [background]);
   useEffect(() => {
-    if (isBgRelated === false) {
-      beach.current.pause();
-      rain.current.pause();
-
-      // relaxmusic.volume = bgSoundVolume;
-      // relaxmusic.current.play();
+    if (isBgRelated === false && isLandingOpen === false) {
+      bgSound.current.pause();
     } else {
-      if (
-        background === "rain" &&
-        isLandingOpen === false
-      ) {
-        rain.current.volume = bgSoundVolume;
-        rain.current.play();
-      }
-      if (
-        background === "beach" &&
-        isLandingOpen === false
-      ) {
-        beach.current.volume = bgSoundVolume;
-        beach.current.play();
-      }
+      bgSound.current.play();
     }
+    //   beach.current.pause();
+    //   rain.current.pause();
+    //   // relaxmusic.volume = bgSoundVolume;
+    //   // relaxmusic.current.play();
+    // } else {
+    //   if (
+    //     background === "rain" &&
+    //     isLandingOpen === false
+    //   ) {
+    //     // rain.current.volume = bgSoundVolume;
+    //     rain.current.play();
+    //   }
+    //   if (
+    //     background === "beach" &&
+    //     isLandingOpen === false
+    //   ) {
+    //     // beach.current.volume = bgSoundVolume;
+    //     beach.current.play();
+    //   }
   }, [isBgRelated, isLandingOpen]);
 
   useEffect(() => {
-    rain.current.volume = bgSoundVolume;
-    beach.current.volume = bgSoundVolume;
+    bgSound.current.volume = bgSoundVolume;
+    // rain.current.volume = bgSoundVolume;
+    // beach.current.volume = bgSoundVolume;
   }, [bgSoundVolume]);
 
   useEffect(() => {
     if (timerOn === true) {
-      rain.current.pause();
-      beach.current.pause();
+      // bgSound.current.pause();
+      //   rain.current.pause();
+      //   beach.current.pause();
     }
     if (
       timerOn === false &&
-      background === "rain" &&
+      // background === "rain" &&
       isLandingOpen === false
     ) {
-      rain.current.play();
+      bgSound.current.play();
+      //   rain.current.play();
     }
-    if (
-      timerOn === false &&
-      background === "beach" &&
-      isLandingOpen === false
-    ) {
-      beach.current.play();
-    }
+    // if (
+    //   timerOn === false &&
+    //   background === "beach" &&
+    //   isLandingOpen === false
+    // ) {
+    //   beach.current.play();
+    // }
   }, [timerOn]);
 
   return (
@@ -130,7 +153,7 @@ function Background() {
           localStorage.clear();
         }}
       >
-        {rain.current ? rain.current.volume : ""}
+        {bgSound.current ? bgSound.current.volume : ""}
       </button>
       {/* RAIN */}
       <img
@@ -172,7 +195,9 @@ function Background() {
         onPlaying={() => {
           setCurrentBgSong("rain");
         }}
-        ref={rain}
+        // ref={rain}
+        id="rain"
+        ref={background === "rain" ? bgSound : rain}
       ></audio>
       {/* BEACH */}
       {/* <video
@@ -197,7 +222,9 @@ function Background() {
         onPlaying={() => {
           setCurrentBgSong("beach");
         }}
-        ref={beach}
+        id="beach"
+        ref={background === "beach" ? bgSound : beach}
+        // ref={beach}
       ></audio>
     </div>
   );

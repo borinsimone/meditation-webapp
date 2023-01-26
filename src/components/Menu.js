@@ -13,6 +13,7 @@ function Menu() {
     setIsBgRelated,
     isMuted,
     setIsMuted,
+    bgSound,
   } = useGlobalContext();
   const [previousVolume, setPreviousVolume] = useState(
     () => {
@@ -106,6 +107,8 @@ function Menu() {
             }`}
             onClick={() => {
               if (isBgRelated) {
+                bgSound.current.pause();
+
                 setBackground("rain");
               }
             }}
@@ -120,6 +123,8 @@ function Menu() {
             }`}
             onClick={() => {
               if (isBgRelated) {
+                bgSound.current.pause();
+
                 setBackground("beach");
               }
             }}
