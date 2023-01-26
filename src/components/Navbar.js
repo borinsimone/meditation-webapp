@@ -14,7 +14,7 @@ function Navbar() {
     setIsTimerOpen,
   } = useGlobalContext();
   return (
-    <div className="navbar absolute w-full h-[7vh] bg-slate-600/80 flex items-center justify-between px-10">
+    <div className="navbar absolute w-full h-[7%] bg-slate-600/80 flex items-center justify-between px-10">
       <div
         className="menu-icon text-white text-2xl md:text-4xl cursor-pointer"
         onClick={toggleMenu}
