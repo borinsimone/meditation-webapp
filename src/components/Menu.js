@@ -172,6 +172,10 @@ function Menu() {
             setBgSoundVolume(event.target.value);
             console.log("fire");
           }}
+          onInput={(event) => {
+            console.log("ios");
+            setBgSoundVolume(event.target.value);
+          }}
           onChange={(event) => {
             setBgSoundVolume(event.target.value);
           }}
@@ -201,6 +205,9 @@ function Menu() {
           )}
         </button>
         {/* {bgSoundVolume} */}
+      </div>
+      <div className="test bg-green-500 mt-10">
+        {navigator.userAgent}
       </div>
     </div>
   );
