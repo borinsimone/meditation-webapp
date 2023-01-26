@@ -91,7 +91,7 @@ function Menu() {
   }
   return (
     <div
-      className={`bg-slate-600/80 w-screen h-[50%] absolute duration-500 bottom-0 z-50 flex flex-col items-center p-10 text-white ${
+      className={`bg-slate-600/80 w-screen h-[93%] absolute duration-500 bottom-0 z-50 flex flex-col items-center p-10 text-white ${
         isMenuOpen ? "left-0" : "-left-[100%]"
       }`}
     >
