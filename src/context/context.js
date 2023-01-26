@@ -57,8 +57,8 @@ const ContextProvider = ({ children }) => {
     // 0.2
   );
   useEffect(() => {
-    localStorage.setItem("bgSoundVolume", bgSoundVolume);
-    console.log("suono cambia");
+    // localStorage.setItem("bgSoundVolume", bgSoundVolume);
+    // console.log("suono cambia");
   }, [bgSoundVolume]);
   const [isMuted, setIsMuted] = useState(() => {
     const data = localStorage.getItem("isMuted");

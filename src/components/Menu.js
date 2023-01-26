@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGlobalContext } from "../context/context";
 import { GoUnmute, GoMute } from "react-icons/go";
 
@@ -28,6 +28,67 @@ function Menu() {
   useEffect(() => {
     localStorage.setItem("previousVolume", previousVolume);
   }, [previousVolume]);
+  //iOs adapt
+  const sliderElement = useRef();
+  function sliderIos(TouchEvent) {
+    if (
+      (navigator.platform === "iPhone") | "iPad" | "iPod" ||
+      navigator.platform.indexOf("iPhone" | "iPad" | "iPod")
+    ) {
+      console.log("ciao");
+      // var element = TouchEvent.srcElement as HTMLInputElement;
+      if (
+        sliderElement.min &&
+        sliderElement.max &&
+        TouchEvent.changedTouches &&
+        TouchEvent.changedTouches.length > 0
+      ) {
+        const max = Number(sliderElement.max);
+        const min = Number(sliderElement.min);
+        let step = 1;
+        if (sliderElement.step) {
+          step = Number(sliderElement.step);
+        }
+        //Calculate the complete range of the slider.
+        const range = max - min;
+
+        const boundingClientRect =
+          sliderElement.getBoundingClientRect();
+        const touch = TouchEvent.changedTouches[0];
+
+        //Calculate the slider value
+        const sliderValue =
+          ((touch.pageX - boundingClientRect.left) /
+            (boundingClientRect.right -
+              boundingClientRect.left)) *
+            range +
+          min;
+
+        //Find the closest valid slider value in respect of the step size
+        for (let i = min; i < max; i += step) {
+          if (i >= sliderValue) {
+            const previousValue = i - step;
+            const previousDifference =
+              sliderValue - previousValue;
+            const currentDifference = i - sliderValue;
+            if (previousDifference > currentDifference) {
+              //The sliderValue is closer to the previous value than the current value.
+              sliderElement.value =
+                previousValue.toString();
+            } else {
+              sliderElement.value = i.toString();
+            }
+
+            //Trigger the change event.
+            sliderElement.dispatchEvent(
+              new Event("change")
+            );
+            break;
+          }
+        }
+      }
+    }
+  }
   return (
     <div
       className={`bg-slate-600/80 w-screen h-[93%] absolute duration-500 bottom-0 z-50 flex flex-col items-center p-10 text-white ${
@@ -100,15 +161,21 @@ function Menu() {
         set background volume
         <input
           className="volume-slider"
+          ref={sliderElement}
           type="range"
           min={0}
           max={0.7}
           step={0.01}
           // default={0.2}
           value={bgSoundVolume}
+          onBlur={(event) => {
+            setBgSoundVolume(event.target.value);
+            console.log("fire");
+          }}
           onChange={(event) => {
             setBgSoundVolume(event.target.value);
           }}
+          onTouchEnd={sliderIos(TouchEvent)}
         />
         <div
           className="be-careful absolute  p-2 right-[10%] -bottom-10 bg-black 

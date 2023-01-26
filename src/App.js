@@ -27,8 +27,8 @@ function App() {
     "--vh",
     `${vh}px`
   );
-  console.log(window.innerHeight);
-  console.log(localStorage);
+  // console.log(window.innerHeight);
+  // console.log(localStorage);
 
   return (
     <div
