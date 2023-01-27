@@ -14,6 +14,7 @@ function Menu() {
     isMuted,
     setIsMuted,
     bgSound,
+    bgColor,
   } = useGlobalContext();
   const [previousVolume, setPreviousVolume] = useState(
     () => {
@@ -92,7 +93,7 @@ function Menu() {
   }
   return (
     <div
-      className={`bg-slate-600/80 w-screen h-[93%] absolute duration-500 bottom-0 z-50 flex flex-col items-center p-10 text-white ${
+      className={`${bgColor} bg-opacity-60 w-screen h-[93%] absolute duration-500 bottom-0 z-50 flex flex-col items-center p-10 text-white ${
         isMenuOpen ? "left-0" : "-left-[100%]"
       }`}
     >
@@ -108,9 +109,8 @@ function Menu() {
             onClick={() => {
               if (isBgRelated) {
                 bgSound.current.pause();
-
-                setBackground("rain");
               }
+              setBackground("rain");
             }}
           >
             rain
@@ -124,9 +124,8 @@ function Menu() {
             onClick={() => {
               if (isBgRelated) {
                 bgSound.current.pause();
-
-                setBackground("beach");
               }
+              setBackground("beach");
             }}
           >
             beach
@@ -201,10 +200,7 @@ function Menu() {
           onClick={() => {
             setIsMuted(!isMuted);
             if (isMuted === true) {
-              // setPreviousVolume(bgSoundVolume);
-              // setBgSoundVolume(0);
             } else {
-              // setBgSoundVolume(previousVolume);
             }
           }}
         >

@@ -23,6 +23,7 @@ function Timer() {
     timerOn,
     setTimerOn,
     rainSound,
+    bgColor,
   } = useGlobalContext();
 
   // function playEndMeditation() {
@@ -197,9 +198,9 @@ function Timer() {
   return (
     <div
       className={`timer-container text-white absolute top-[calc(45%-30vh)] left-[calc(50%-40vw)] rounded
-     bg-slate-600 w-[80vw] h-[60vh] flex items-center justify-center flex-col duration-500 ${
-       isTimerOpen ? "opacity-1 z-40" : "opacity-0 -z-20"
-     }`}
+     ${bgColor} w-[80vw] h-[60vh] flex items-center justify-center flex-col duration-500 ${
+        isTimerOpen ? "opacity-1 z-40" : "opacity-0 -z-20"
+      }`}
     >
       <TimerSetting
         isTimerSettingOpen={isTimerSettingOpen}
@@ -222,7 +223,9 @@ function Timer() {
         }}
       />
 
-      <div className="counter-container border relative bg-slate-600 w-[80%] h-[40%] md:w-[70%] md:h-[40%]  flex items-center justify-center rounded-md">
+      <div
+        className={`counter-container border relative ${bgColor} w-[80%] h-[40%] md:w-[70%] md:h-[40%]  flex items-center justify-center rounded-md`}
+      >
         <div className=" relative counter text-6xl md:text-9xl ">
           {/* <button
             className="absolute left-0 text-lg bg-red-700 p-5"

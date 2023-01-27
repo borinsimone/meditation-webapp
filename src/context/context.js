@@ -43,19 +43,16 @@ const ContextProvider = ({ children }) => {
       return "beach";
     }
   });
-  // const [bgSoundVolume, setBgSoundVolume] = useState(0.2);
-  const [bgSoundVolume, setBgSoundVolume] = useState(
-    () => {
-      const data = localStorage.getItem("bgSoundVolume");
-      if (data !== null) {
-        const parsedData = JSON.parse(data);
-        return parsedData;
-      } else {
-        return 0.2;
-      }
+
+  const [bgSoundVolume, setBgSoundVolume] = useState(() => {
+    const data = localStorage.getItem("bgSoundVolume");
+    if (data !== null) {
+      const parsedData = JSON.parse(data);
+      return parsedData;
+    } else {
+      return 0.2;
     }
-    // 0.2
-  );
+  });
   useEffect(() => {
     localStorage.setItem("bgSoundVolume", bgSoundVolume);
     // console.log("suono cambia");
@@ -68,37 +65,27 @@ const ContextProvider = ({ children }) => {
     } else {
       return false;
     }
-
-    // return false;
   });
   useEffect(() => {
-    // if (isMuted === "") {
-    //   setIsMuted(
-    //     localStorage.getItem("bgSoundVolume") === "true"
-    //   );
-    // }
-    // localStorage.setItem("isMuted", isMuted);
     localStorage.setItem(
       "isMuted",
       JSON.stringify(isMuted)
     );
     console.log("ismuted", isMuted);
   }, [isMuted]);
-  // useEffect(() => {
-  //   //   if (isMuted === "") {
-  //   //     setIsMuted(
-  //   //       localStorage.getItem("bgSoundVolume") === "true"
-  //   //     );
-  //   //   }
-  //   //   console.log(localStorage.getItem("isMuted"));
-  //   const data = localStorage.getItem("isMuted");
-  //   if (data !== null) setIsMuted(JSON.parse(data));
-  // });
 
   const [isBgRelated, setIsBgRelated] = useState(true);
   const bgSound = useRef();
 
   const [isLandingOpen, setIsLandingOpen] = useState(true);
+
+  let rainColor = "bg-slate-600";
+  let beachColor = "bg-[#d5664f]";
+  let bgColor =
+    background === "rain" ? rainColor : beachColor;
+  // const [bgColor, setBgColor] = useState(
+  //   background === "rain" ? rainColor : beachColor
+  // );
 
   return (
     <GlobalContext.Provider
@@ -132,6 +119,9 @@ const ContextProvider = ({ children }) => {
         isLandingOpen,
         setIsLandingOpen,
         bgSound,
+        rainColor,
+        beachColor,
+        bgColor,
       }}
     >
       {children}

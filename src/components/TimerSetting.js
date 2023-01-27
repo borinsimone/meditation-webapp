@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { useGlobalContext } from "../context/context";
 function TimerSetting({
   isTimerOpen,
   setIsTimerOpen,
@@ -16,13 +21,14 @@ function TimerSetting({
   songs,
   songList,
 }) {
+  const { bgColor } = useGlobalContext();
   const [isSongPickerOpen, setIsSongPickerOpen] =
     useState(false);
   const [index, setIndex] = useState();
 
   return (
     <div
-      className={`settings absolute h-full w-full bg-slate-600/80 rounded  flex flex-col items-center justify-center duration-500 gap-4 ${
+      className={`settings absolute h-full w-full ${bgColor} bg-opacity-80  rounded  flex flex-col items-center justify-center duration-500 gap-4 ${
         isTimerSettingOpen
           ? "opacity-1 z-40 delay-100"
           : "opacity-0 -z-10"
