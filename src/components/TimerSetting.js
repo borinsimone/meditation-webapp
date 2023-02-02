@@ -83,7 +83,6 @@ function TimerSetting({
                     onClick={() => {
                       setIsSongPickerOpen(false);
                       setCurrentSong(songList[song.id]);
-                      // console.log(songs);
                       setIndex(song.id);
                       console.log(currentSong);
                     }}

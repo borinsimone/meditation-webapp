@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "../index.css";
 import { useGlobalContext } from "../context/context";
 import end_meditation_bell from "../assets/sound/end_meditation.mp3";
-// import tibetan_bowl from "../assets/sound/meditation sound/rain.mp3";
-// import rainSong from "../assets/sound/meditation sound/rain.mp3";
+
 import waterFlowingSound from "../assets/sound/meditation sound/Water Flowing And Birds.wav"
 import waterfallSound from "../assets/sound/meditation sound/Small Waterfall.wav"
 
@@ -28,13 +27,7 @@ function Timer() {
     bgColor,
   } = useGlobalContext();
 
-  // function playEndMeditation() {
-  //   let end_meditation_sound = new Audio(
-  //     end_meditation_bell
-  //   );
-  //   end_meditation_sound.volume = 0.08;
-  //   end_meditation_sound.play();
-  // }
+
   const [endMeditationSound, setEndMeditationSound] =
     useState(() => {
       const data = localStorage.getItem(
@@ -47,7 +40,7 @@ function Timer() {
         return true;
       }
 
-      // return false;
+    
     });
 
   useEffect(() => {
@@ -101,9 +94,7 @@ function Timer() {
       setTimerOn(false);
       setIsTimerEnded(true);
       clearInterval(interval);
-      // currentSong.pause();
       if (endMeditationSound) {
-        // playEndMeditation();
         let end_meditation_sound = new Audio(
           end_meditation_bell
         );
@@ -120,7 +111,6 @@ function Timer() {
   useEffect(() => {
     //VOLUME TEST
     let volumeInterval;
-    // console.log(currentSong);
     if (timerOn && currentSong !== "") {
       currentSong.volume = volume;
       
@@ -185,7 +175,6 @@ function Timer() {
     if (currentSong !== "") {
       currentSong.load();
     }
-    // console.log(startingMinute);
   };
   const [isTimerSettingOpen, setIsTimerSettingOpen] =
     useState(true);
@@ -228,7 +217,7 @@ function Timer() {
         songList={songList}
       />
       <AiOutlineCloseCircle
-        className="absolute top-5 right-5 text-3xl cursor-pointer"
+        className="absolute top-5 right-5 text-3xl cursor-pointer z-40"
         onClick={() => {
           setIsTimerOpen(false);
         }}
