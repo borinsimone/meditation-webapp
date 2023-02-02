@@ -20,28 +20,28 @@ video {
   position: fixed;
   z-index: 0;
 }
-.quote-container {
-  // background: rgb(128, 0, 128);
-  background: -moz-linear-gradient(
-    0deg,
-    rgba(71, 85, 105, 1) 0%,
-    rgb(150, 204, 219) 50%,
-    rgba(71, 85, 105, 1) 100%
-  );
-  background: -webkit-linear-gradient(
-    0deg,
-    rgba(71, 85, 105, 1) 0%,
-    rgb(150, 204, 219) 50%,
-    rgba(71, 85, 105, 1) 100%
-  );
-  background: linear-gradient(
-    0deg,
-    rgba(71, 85, 105, 1) 0%,
-    rgb(150, 204, 219) 50%,
-    rgba(71, 85, 105, 1) 100%
-  );
-  // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#800080",endColorstr="#800080",GradientType=1);
-}
+// .quote-container {
+//   // background: rgb(128, 0, 128);
+//   background: -moz-linear-gradient(
+//     0deg,
+//     rgba(71, 85, 105, 1) 0%,
+//     rgb(150, 204, 219) 50%,
+//     rgba(71, 85, 105, 1) 100%
+//   );
+//   background: -webkit-linear-gradient(
+//     0deg,
+//     rgba(71, 85, 105, 1) 0%,
+//     rgb(150, 204, 219) 50%,
+//     rgba(71, 85, 105, 1) 100%
+//   );
+//   background: linear-gradient(
+//     0deg,
+//     rgba(71, 85, 105, 1) 0%,
+//     rgb(150, 204, 219) 50%,
+//     rgba(71, 85, 105, 1) 100%
+//   );
+//   // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#800080",endColorstr="#800080",GradientType=1);
+// }
 
 // .main-icon::before {
 //   content: "";

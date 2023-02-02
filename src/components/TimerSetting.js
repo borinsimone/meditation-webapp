@@ -17,7 +17,7 @@ function TimerSetting({
   endMeditationSound,
   currentSong,
   setCurrentSong,
-  tibetan_bowl_sound,
+
   songs,
   songList,
 }) {
@@ -35,7 +35,7 @@ function TimerSetting({
       } text-xl md:text-3xl`}
     >
       <AiOutlineCloseCircle
-        className="absolute top-5 right-5 text-3xl"
+        className="absolute top-5 right-5 text-3xl cursor-pointer"
         onClick={() => {
           setIsTimerSettingOpen(false);
         }}
@@ -59,7 +59,7 @@ function TimerSetting({
         <div className="choose-song w-[80%] flex  gap-4  justify-between">
           Song:
           <div
-            className="song-choice relative bg-white/20 px-2 rounded capitalize"
+            className="song-choice relative bg-white/20 px-2 rounded capitalize cursor-pointer"
             onClick={() => {
               setIsSongPickerOpen(!isSongPickerOpen);
             }}
@@ -83,8 +83,9 @@ function TimerSetting({
                     onClick={() => {
                       setIsSongPickerOpen(false);
                       setCurrentSong(songList[song.id]);
-                      console.log(songs);
+                      // console.log(songs);
                       setIndex(song.id);
+                      console.log(currentSong);
                     }}
                   >
                     {song.title}
@@ -100,23 +101,6 @@ function TimerSetting({
               >
                 no song
               </li>
-              {/* <li
-        className="hover:bg-blue-500 hover:text-white duration-500 p-2"
-        onClick={() => {
-          setIsSongPickerOpen(false);
-          setCurrentSong(tibetan_bowl_sound);
-        }}
-      >
-        tibetan bowl
-      </li>
-      <li
-      </li>
-      <li
-      </li>
-      <li
-      </li>
-      <li
-      </li> */}
             </ul>
           </div>
         </div>

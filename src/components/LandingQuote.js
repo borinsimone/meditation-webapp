@@ -10,7 +10,7 @@ function LandingQuote() {
     isLandingOpen,
     setIsLandingOpen,
     isMuted,
-    bgSound,
+    bgSound,bgColor
   } = useGlobalContext();
   const url =
     // "https://api.api-ninjas.com/v1/quotes?category=inspirational";
@@ -37,7 +37,7 @@ function LandingQuote() {
 
   return (
     <div
-      className={`absolute h-screen w-screen bg-slate-600  text-white text-2xl font-bold 
+      className={`absolute h-full w-full ${bgColor}  text-white text-2xl font-bold 
     font-[italic] flex items-center justify-center flex-col duration-700 delay-200 ${
       isLandingOpen ? "z-50 opacity-1" : "-z-50 opacity-0"
     } `}

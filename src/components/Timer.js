@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import "../index.css";
 import { useGlobalContext } from "../context/context";
 import end_meditation_bell from "../assets/sound/end_meditation.mp3";
-import tibetan_bowl from "../assets/sound/meditation sound/rain.mp3";
-import rainSong from "../assets/sound/meditation sound/rain.mp3";
+// import tibetan_bowl from "../assets/sound/meditation sound/rain.mp3";
+// import rainSong from "../assets/sound/meditation sound/rain.mp3";
+import waterFlowingSound from "../assets/sound/meditation sound/Water Flowing And Birds.wav"
+import waterfallSound from "../assets/sound/meditation sound/Small Waterfall.wav"
 
 import songs from "../assets/sound/meditation sound/song.json";
 import {
@@ -47,6 +49,7 @@ function Timer() {
 
       // return false;
     });
+
   useEffect(() => {
     localStorage.setItem(
       "endMeditationSound",
@@ -114,55 +117,57 @@ function Timer() {
     };
   });
 
-  // useEffect(() => {
-  //   //VOLUME TEST
-  //   let volumeInterval;
-  //   if (timerOn && currentSong !== "") {
-  //     currentSong.volume = volume;
-  //     currentSong.play();
-  //     volumeInterval = setInterval(() => {
-  //       if (volume <= userVolume) {
-  //         setVolume(volume + 0.01);
-  //       } else {
-  //         clearInterval(volumeInterval);
-  //       }
-  //     }, 10);
-  //   }
-  //   if (timerOn === false && currentSong !== "") {
-  //     currentSong.volume = volume;
+  useEffect(() => {
+    //VOLUME TEST
+    let volumeInterval;
+    // console.log(currentSong);
+    if (timerOn && currentSong !== "") {
+      currentSong.volume = volume;
+      
+      currentSong.play();
+      volumeInterval = setInterval(() => {
+        if (volume <= userVolume) {
+          setVolume(volume + 0.01);
+        } else {
+          clearInterval(volumeInterval);
+        }
+      }, 10);
+    }
+    if (timerOn === false && currentSong !== "") {
+      currentSong.volume = volume;
 
-  //     volumeInterval = setInterval(() => {
-  //       if (volume >= 0.01) {
-  //         setVolume(volume - 0.01);
-  //       } else {
-  //         clearInterval(volumeInterval);
-  //       }
-  //     }, 10);
+      volumeInterval = setInterval(() => {
+        if (volume >= 0.01) {
+          setVolume(volume - 0.01);
+        } else {
+          clearInterval(volumeInterval);
+        }
+      }, 10);
 
-  //     if (
-  //       volume < 0.01 &&
-  //       (minutes === 0 || seconds === 0)
-  //     ) {
-  //       currentSong.pause();
+      if (
+        volume < 0.01 &&
+        (minutes === 0 || seconds === 0)
+      ) {
+        currentSong.pause();
 
-  //       currentSong.load();
-  //     }
-  //   }
-  //   if (
-  //     timerOn === false &&
-  //     currentSong !== "" &&
-  //     volume < 0.01 &&
-  //     (minutes !== 0 || seconds !== 0)
-  //   ) {
-  //     currentSong.pause();
+        currentSong.load();
+      }
+    }
+    if (
+      timerOn === false &&
+      currentSong !== "" &&
+      volume < 0.01 &&
+      (minutes !== 0 || seconds !== 0)
+    ) {
+      currentSong.pause();
 
-  //     setVolume(0.0);
-  //     console.log("ciao");
-  //   }
-  //   return () => {
-  //     clearInterval(volumeInterval);
-  //   };
-  // });
+      setVolume(0.0);
+      console.log("ciao");
+    }
+    return () => {
+      clearInterval(volumeInterval);
+    };
+  });
 
   useEffect(() => {
     setVolume(userVolume);
@@ -184,21 +189,27 @@ function Timer() {
   };
   const [isTimerSettingOpen, setIsTimerSettingOpen] =
     useState(true);
+
   useEffect(() => {
     setIsTimerSettingOpen(true);
   }, [isTimerOpen]);
+  useEffect(() => {
+    if (isTimerSettingOpen) {
+      setTimerOn(false);
+    }
+  }, [isTimerSettingOpen]);
 
   //SONG FOR MEDITATION
 
   const [currentSong, setCurrentSong] = useState("");
-  let tibetan_bowl_sound = new Audio(tibetan_bowl);
-  let rainSong_sound = new Audio(rainSong);
+  let waterFlowing_Sound = new Audio(waterFlowingSound);
+  let waterfall_Sound = new Audio(waterfallSound);
 
-  const songList = [tibetan_bowl_sound, rainSong_sound];
+  const songList = [waterFlowing_Sound,waterfall_Sound];
   return (
     <div
-      className={`timer-container text-white absolute top-[calc(45%-30vh)] left-[calc(50%-40vw)] rounded
-     ${bgColor} w-[80vw] h-[60vh] flex items-center justify-center flex-col duration-500 ${
+      className={`timer-container text-white absolute top-[calc(45%-30%)] left-[calc(50%-40%)] lg:left-[calc(50%-25%)] rounded
+     ${bgColor} w-[80%] lg:w-[50%] h-[60%] flex items-center justify-center flex-col duration-500 ${
         isTimerOpen ? "opacity-1 z-40" : "opacity-0 -z-20"
       }`}
     >
@@ -212,12 +223,12 @@ function Timer() {
         endMeditationSound={endMeditationSound}
         currentSong={currentSong}
         setCurrentSong={setCurrentSong}
-        tibetan_bowl_sound={tibetan_bowl_sound}
+       
         songs={songs}
         songList={songList}
       />
       <AiOutlineCloseCircle
-        className="absolute top-5 right-5 text-3xl"
+        className="absolute top-5 right-5 text-3xl cursor-pointer"
         onClick={() => {
           setIsTimerOpen(false);
         }}
@@ -245,19 +256,19 @@ function Timer() {
         <div className="play-pause w-full  flex   items-center justify-center gap-4 text-4xl  ">
           {timerOn ? (
             <BsFillPauseFill
-              className="text-5xl md:text-7xl"
+              className="text-5xl md:text-7xl cursor-pointer"
               onClick={() => setTimerOn(!timerOn)}
             />
           ) : (
             <BsFillPlayFill
-              className="text-5xl md:text-7xl"
+              className="text-5xl md:text-7xl cursor-pointer"
               onClick={() => {
                 setTimerOn(!timerOn);
               }}
             />
           )}
           <RiRestartLine
-            className="text-3xl md:text-5xl"
+            className="text-3xl md:text-5xl cursor-pointer"
             onClick={resetTimer}
           />
         </div>
@@ -290,14 +301,14 @@ function Timer() {
             }}
           >
             {currentSong.muted === true ? (
-              <GoMute className="text-2xl md:text-4xl" />
+              <GoMute className="text-2xl md:text-4xl " />
             ) : (
-              <GoUnmute className="text-2xl md:text-4xl" />
+              <GoUnmute className="text-2xl md:text-4xl " />
             )}
           </button>
         </div>
         <div
-          className="timer-settings w-fit flex items-center justify-center text-2xl md:text-3xl capitalize gap-2 bg-slate-100/20 px-2 py-1 rounded"
+          className="timer-settings cursor-pointer w-fit flex items-center justify-center text-2xl md:text-3xl capitalize gap-2 bg-slate-100/20 px-2 py-1 rounded"
           onClick={() => {
             if (isTimerSettingOpen === false) {
               setIsTimerSettingOpen(true);

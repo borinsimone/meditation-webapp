@@ -25,7 +25,6 @@ function Background() {
   useEffect(() => {
     if (isMuted && isBgRelated && isLandingOpen === false) {
       bgSound.current.pause();
- 
     }
     if (
       !isMuted &&
@@ -33,8 +32,6 @@ function Background() {
       isLandingOpen === false
     ) {
       bgSound.current.play();
-      console.log("oaaaaaaaaaaaa");
- 
     }
   }, [isMuted]);
 
@@ -50,7 +47,6 @@ function Background() {
       bgSound.current.load();
       bgSound.current.volume = bgSoundVolume;
       bgSound.current.play();
-
     }
     localStorage.setItem("background", background);
   }, [background]);
@@ -64,45 +60,40 @@ function Background() {
     ) {
       bgSound.current.play();
     }
-
   }, [isBgRelated, isLandingOpen]);
 
   useEffect(() => {
     bgSound.current.volume = bgSoundVolume;
-   
   }, [bgSoundVolume]);
 
   useEffect(() => {
     if (timerOn === true) {
-  
+      bgSound.current.pause();
     }
     if (
       timerOn === false &&
-   
       !isMuted &&
       isLandingOpen === false
     ) {
       bgSound.current.play();
-   
     }
-
   }, [timerOn]);
 
   return (
     <div>
-      <button
+      {/* <button
         className="absolute top-20  w-24 bg-black z-50 text-white"
         onClick={() => {
           localStorage.clear();
         }}
       >
         {bgSound.current ? bgSound.current.volume : ""}
-      </button>
+      </button> */}
       {/* RAIN */}
       <img
         src={require("../assets/video/rain.gif")}
         alt=""
-        className={`h-full w-full fixed  ${
+        className={`h-full w-full max-w-[1200px] fixed  ${
           background === "rain"
             ? "z-0 opacity-1"
             : "-z-50 opacity-0"
@@ -111,13 +102,13 @@ function Background() {
       <img
         src={require("../assets/video/beach.gif")}
         alt=""
-        className={`h-full w-full fixed ${
+        className={`h-full w-full max-w-[1200px] fixed ${
           background === "beach"
             ? "z-0 opacity-1"
             : "-z-50 opacity-0"
         }`}
       />
-   
+
       {/* RAIN SOUND */}
       <audio
         src={require("../assets/sound/rain.mp3")}
@@ -129,7 +120,6 @@ function Background() {
         ref={background === "rain" ? bgSound : rain}
       ></audio>
       {/* BEACH */}
-     
 
       {/* BEACH SOUND */}
       <audio

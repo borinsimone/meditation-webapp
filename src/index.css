@@ -24,11 +24,6 @@ video {
   z-index: 0;
 }
 
-.quote-container {
-  background: -webkit-gradient(linear, left bottom, left top, from(#475569), color-stop(50%, #96ccdb), to(#475569));
-  background: linear-gradient(0deg, #475569 0%, #96ccdb 50%, #475569 100%);
-}
-
 .utility-shadow {
   background: #211721;
   background: -webkit-gradient(linear, left bottom, left top, from(#211721), color-stop(50%, #211721), to(rgba(255, 255, 255, 0)));

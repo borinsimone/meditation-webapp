@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
 import SignIn from "./components/SignIn";
-import Meditation from "./components/Timer";
+import Timer from "./components/Timer";
 import LandingQuote from "./components/LandingQuote";
 import meditationLogo from "./assets/zen-meditation.png";
 import beach from "./assets/video/beach.mp4";
@@ -21,6 +21,8 @@ function App() {
     toggleSignin,
     isTimerOpen,
     setIsTimerOpen,
+    background,
+    bgColor,
   } = useGlobalContext();
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty(
@@ -32,35 +34,37 @@ function App() {
 
   return (
     <div
-      className={`App relative   w-screen overflow-hidden`}
+      className={`App    w-screen overflow-hidden flex justify-center  ${bgColor}`}
     >
-      <LandingQuote />
+      <div className="container relative max-w-[1200px] h-full overflow-hidden">
+        <LandingQuote />
 
-      <Background />
-      <Menu />
-      <div className="title text-white text-2xl w-full text-center absolute top-[10vh]">
-        Your journey start from you
-      </div>
-      <img
-        src={meditationLogo}
-        className="absolute top-[30%] md:top-[20%] left-[calc(50%-200px)] h-[400px]"
-        alt=""
-      />
-      <div
-        className={`main-icon absolute bottom-[10vh] left-0 w-full grid place-content-center  `}
-      >
-        <GiLotus
-          className=" text-[70px] md:text-[100px] text-white cursor-pointer select-none"
-          onClick={() => {
-            setIsTimerOpen(!isTimerOpen);
-            setIsMenuOpen(false);
-            setIsSigninOpen(false);
-          }}
+        <Background />
+        <Menu />
+        <div className="title text-white text-2xl w-full text-center absolute top-[10vh]">
+          Your journey start from you
+        </div>
+        <img
+          src={meditationLogo}
+          className="absolute top-[30%] md:top-[20%] left-[calc(50%-200px)] h-[400px] aspect-square"
+          alt=""
         />
+        <div
+          className={`main-icon absolute bottom-[10vh] left-0 w-full grid place-content-center  `}
+        >
+          <GiLotus
+            className=" text-[70px] md:text-[100px] text-white cursor-pointer select-none"
+            onClick={() => {
+              setIsTimerOpen(!isTimerOpen);
+              setIsMenuOpen(false);
+              setIsSigninOpen(false);
+            }}
+          />
+        </div>
+        <Navbar />
+        <SignIn />
+        <Timer />
       </div>
-      <Navbar />
-      <SignIn />
-      <Meditation />
     </div>
   );
 }

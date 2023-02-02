@@ -2,13 +2,13 @@
   "song": [
     {
       "id": 0,
-      "title": "tibetan bowl",
-      "url": "./Tibetan Singing Bowls .mp3"
+      "title": "water flowing",
+      "url": "./Water Flowing And Birds.wav"
     },
     {
       "id": 1,
-      "title": "ohm mantra",
-      "url": "./Tibetan Singing Bowls .mp3"
+      "title": "small waterfall",
+      "url": "./Small waterfall.wav"
     }
   ]
 }

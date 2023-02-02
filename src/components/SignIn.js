@@ -17,11 +17,12 @@ function SignIn() {
     toggleRemember,
     isTimerOpen,
     setIsTimerOpen,
+    bgColor,
   } = useGlobalContext();
   const [showPass, setShowPass] = useState(false);
   return (
     <div
-      className={`sign-in absolute top-[calc(50%-40vh)] left-[calc(50%-40vw)] flex justify-center bg-slate-600 w-[80vw] h-[70vh] rounded-lg duration-500 text-white text-base md:text-3xl ${
+      className={`sign-in absolute top-[calc(50%-40%)] left-[calc(50%-40%)] flex justify-center ${bgColor} w-[80%] h-[70%] lg:h-[80%] rounded-lg duration-500 text-white text-base md:text-3xl ${
         isSigninOpen ? "opacity-1 z-50" : "opacity-0 -z-10"
       } `}
     >
@@ -42,7 +43,7 @@ function SignIn() {
           <div className="input-field  relative w-full flex items-center ">
             <AiFillMail className="absolute left-5 text-xl md:text-2xl  lg:text-3xl" />
             <input
-              className="bg-[#5c5c5c] h-12 md:h-16 w-full border-[1px] border-[#ffffff] rounded-md pl-12 md:text-3xl "
+              className="bg-[#5c5c5c]/50 h-12 md:h-16 w-full border-[1px] border-[#ffffff] rounded-md pl-12 md:text-3xl "
               placeholder="this.is.a.mail@mail"
               type="email"
               required
@@ -51,7 +52,7 @@ function SignIn() {
           <div className="input-field relative w-full flex items-center">
             <BsKeyFill className="absolute left-5 text-xl md:text-2xl  lg:text-3xl" />
             <input
-              className="bg-[#5c5c5c] h-12 md:h-16 w-full border-[1px] border-[#ffffff] rounded-md pl-12 md:text-3xl"
+              className="bg-[#5c5c5c]/50 h-12 md:h-16 w-full border-[1px] border-[#ffffff] rounded-md pl-12 md:text-3xl"
               placeholder="************"
               type={showPass ? "text" : "password"}
               required
