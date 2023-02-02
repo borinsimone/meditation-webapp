@@ -1,7 +1,9 @@
 {
   "files": {
-    "main.css": "/meditation-webapp/static/css/main.4a986fee.css",
-    "main.js": "/meditation-webapp/static/js/main.57ad99fb.js",
+    "main.css": "/meditation-webapp/static/css/main.f4f6e78a.css",
+    "main.js": "/meditation-webapp/static/js/main.46d105ba.js",
+    "static/media/Water Flowing And Birds.wav": "/meditation-webapp/static/media/Water Flowing And Birds.bb0d4e33aa6970a3dcab.wav",
+    "static/media/Small Waterfall.wav": "/meditation-webapp/static/media/Small Waterfall.eb700f188934578ac76b.wav",
     "static/media/rain.mp3": "/meditation-webapp/static/media/rain.e1d6cbcef9aaeded1a0d.mp3",
     "static/media/beach.mp3": "/meditation-webapp/static/media/beach.d1908973f253638af907.mp3",
     "static/media/beach.gif": "/meditation-webapp/static/media/beach.7b3bb5d2d54ce311c0cd.gif",
@@ -11,11 +13,11 @@
     "static/media/end_meditation.mp3": "/meditation-webapp/static/media/end_meditation.d209942d44ec04f73f3f.mp3",
     "static/media/zen-meditation.png": "/meditation-webapp/static/media/zen-meditation.b3ab2d6c4ade566b6b9d.png",
     "index.html": "/meditation-webapp/index.html",
-    "main.4a986fee.css.map": "/meditation-webapp/static/css/main.4a986fee.css.map",
-    "main.57ad99fb.js.map": "/meditation-webapp/static/js/main.57ad99fb.js.map"
+    "main.f4f6e78a.css.map": "/meditation-webapp/static/css/main.f4f6e78a.css.map",
+    "main.46d105ba.js.map": "/meditation-webapp/static/js/main.46d105ba.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a986fee.css",
-    "static/js/main.57ad99fb.js"
+    "static/css/main.f4f6e78a.css",
+    "static/js/main.46d105ba.js"
   ]
 }
