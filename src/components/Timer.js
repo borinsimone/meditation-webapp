@@ -3,8 +3,8 @@ import "../index.css";
 import { useGlobalContext } from "../context/context";
 import end_meditation_bell from "../assets/sound/end_meditation.mp3";
 
-import waterFlowingSound from "../assets/sound/meditation sound/Water Flowing And Birds.wav"
-import waterfallSound from "../assets/sound/meditation sound/Small Waterfall.wav"
+import waterFlowingSound from "../assets/sound/meditation sound/Water Flowing And Birds.wav";
+import waterfallSound from "../assets/sound/meditation sound/Small Waterfall.wav";
 
 import songs from "../assets/sound/meditation sound/song.json";
 import {
@@ -27,7 +27,6 @@ function Timer() {
     bgColor,
   } = useGlobalContext();
 
-
   const [endMeditationSound, setEndMeditationSound] =
     useState(() => {
       const data = localStorage.getItem(
@@ -39,8 +38,6 @@ function Timer() {
       } else {
         return true;
       }
-
-    
     });
 
   useEffect(() => {
@@ -106,14 +103,14 @@ function Timer() {
     return () => {
       clearInterval(interval);
     };
-  });
+  }, [timerOn, seconds, minutes]);
 
   useEffect(() => {
     //VOLUME TEST
     let volumeInterval;
     if (timerOn && currentSong !== "") {
       currentSong.volume = volume;
-      
+
       currentSong.play();
       volumeInterval = setInterval(() => {
         if (volume <= userVolume) {
@@ -194,7 +191,7 @@ function Timer() {
   let waterFlowing_Sound = new Audio(waterFlowingSound);
   let waterfall_Sound = new Audio(waterfallSound);
 
-  const songList = [waterFlowing_Sound,waterfall_Sound];
+  const songList = [waterFlowing_Sound, waterfall_Sound];
   return (
     <div
       className={`timer-container text-white absolute top-[calc(45%-30%)] left-[calc(50%-40%)] lg:left-[calc(50%-25%)] rounded
@@ -212,12 +209,11 @@ function Timer() {
         endMeditationSound={endMeditationSound}
         currentSong={currentSong}
         setCurrentSong={setCurrentSong}
-       
         songs={songs}
         songList={songList}
       />
       <AiOutlineCloseCircle
-        className="absolute top-5 right-5 text-3xl cursor-pointer z-40"
+        className="absolute top-5 right-5 text-3xl cursor-pointer z-20"
         onClick={() => {
           setIsTimerOpen(false);
         }}

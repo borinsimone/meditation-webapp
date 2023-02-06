@@ -10,7 +10,8 @@ function LandingQuote() {
     isLandingOpen,
     setIsLandingOpen,
     isMuted,
-    bgSound,bgColor
+    bgSound,
+    bgColor,
   } = useGlobalContext();
   const url =
     // "https://api.api-ninjas.com/v1/quotes?category=inspirational";

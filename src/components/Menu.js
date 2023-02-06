@@ -30,7 +30,7 @@ function Menu() {
   useEffect(() => {
     localStorage.setItem("previousVolume", previousVolume);
   }, [previousVolume]);
- 
+
   return (
     <div
       className={`${bgColor} bg-opacity-60 w-full h-[93%] absolute duration-500 bottom-0 z-50 flex flex-col items-center md:pt-20 md:gap-10 p-10
@@ -84,6 +84,8 @@ function Menu() {
                 : "bg-white text-black"
             }`}
             onClick={() => {
+              bgSound.current.pause();
+
               setIsBgRelated(true);
             }}
           >
@@ -91,6 +93,8 @@ function Menu() {
           </button>
           <button
             onClick={() => {
+              bgSound.current.pause();
+
               setIsBgRelated(false);
             }}
             className={` py-2 px-5 rounded duration-500  ${
@@ -113,7 +117,6 @@ function Menu() {
           max={0.7}
           step={0.01}
           value={bgSoundVolume}
-     
           onChange={(event) => {
             setBgSoundVolume(event.target.value);
           }}
@@ -142,7 +145,6 @@ function Menu() {
             <GoUnmute className="text-2xl md:text-4xl" />
           )}
         </button>
-        {/* {bgSoundVolume} */}
       </div>
 
       <div className="test bg-green-500 mt-10"></div>

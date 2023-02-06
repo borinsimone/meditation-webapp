@@ -3,7 +3,7 @@ import Menu from "./components/Menu";
 import SignIn from "./components/SignIn";
 import Timer from "./components/Timer";
 import LandingQuote from "./components/LandingQuote";
-import meditationLogo from "./assets/zen-meditation.png";
+import meditationLogo from "./assets/images/zen-meditation.png";
 import beach from "./assets/video/beach.mp4";
 import rain from "./assets/video/rain.mp4";
 import Background from "./components/Background";

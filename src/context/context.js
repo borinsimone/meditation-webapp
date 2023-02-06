@@ -75,12 +75,14 @@ const ContextProvider = ({ children }) => {
   }, [isMuted]);
 
   const [isBgRelated, setIsBgRelated] = useState(true);
+
+  
   const bgSound = useRef();
 
   const [isLandingOpen, setIsLandingOpen] = useState(true);
 
   let rainColor = "bg-slate-600";
-  let beachColor = "bg-[#d5664f]";
+  let beachColor = "bg-[#EE5C42]";
   let bgColor =
     background === "rain" ? rainColor : beachColor;
   // const [bgColor, setBgColor] = useState(

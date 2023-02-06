@@ -21,63 +21,47 @@ function Background() {
   const [currentBgSong, setCurrentBgSong] = useState("");
   const rain = useRef();
   const beach = useRef();
+  const relax = useRef();
+  // useEffect(() => {
+  // console.log(bgSound.current.id)
+  // }, [background,isBgRelated])
 
+  // VOLUME/MUTE MANAGEMENT
   useEffect(() => {
-    if (isMuted && isBgRelated && isLandingOpen === false) {
+    if (isMuted && isLandingOpen === false) {
       bgSound.current.pause();
     }
-    if (
-      !isMuted &&
-      isBgRelated &&
-      isLandingOpen === false
-    ) {
+    if (!isMuted && isLandingOpen === false) {
+      bgSound.current.volume = bgSoundVolume;
+
       bgSound.current.play();
     }
   }, [isMuted]);
-
-  useEffect(() => {
-    console.log(bgSound.current.id);
-    if (
-      isBgRelated &&
-      !isMuted &&
-      !isLandingOpen &&
-      bgSound.current &&
-      bgSound.current.id === background
-    ) {
-      bgSound.current.load();
-      bgSound.current.volume = bgSoundVolume;
-      bgSound.current.play();
-    }
-    localStorage.setItem("background", background);
-  }, [background]);
-  useEffect(() => {
-    if (isBgRelated === false && isLandingOpen === false) {
-      bgSound.current.pause();
-    } else if (
-      isBgRelated &&
-      !isMuted &&
-      isLandingOpen === false
-    ) {
-      bgSound.current.play();
-    }
-  }, [isBgRelated, isLandingOpen]);
 
   useEffect(() => {
     bgSound.current.volume = bgSoundVolume;
   }, [bgSoundVolume]);
 
   useEffect(() => {
-    if (timerOn === true) {
-      bgSound.current.pause();
-    }
-    if (
-      timerOn === false &&
-      !isMuted &&
-      isLandingOpen === false
-    ) {
+    bgSound.current.pause();
+    console.log(bgSound.current.id);
+    console.log(isBgRelated);
+    if (!isMuted && !isLandingOpen) {
+      bgSound.current.load();
+      bgSound.current.volume = bgSoundVolume;
       bgSound.current.play();
     }
-  }, [timerOn]);
+    localStorage.setItem("background", background);
+  }, [background, isBgRelated]);
+
+  // useEffect(() => {
+  //   if (!isBgRelated && !isMuted && !isLandingOpen) {
+  //     bgSound.current.pause();
+  //     relax.current.play();
+  //   } else if (isBgRelated && !isMuted && !isLandingOpen) {
+  //     relax.current.pause();
+  //   }
+  // }, [isBgRelated]);
 
   return (
     <div>
@@ -115,9 +99,12 @@ function Background() {
         onPlaying={() => {
           setCurrentBgSong("rain");
         }}
-        // ref={rain}
         id="rain"
-        ref={background === "rain" ? bgSound : rain}
+        ref={
+          background === "rain" && isBgRelated
+            ? bgSound
+            : rain
+        }
       ></audio>
       {/* BEACH */}
 
@@ -128,11 +115,56 @@ function Background() {
           setCurrentBgSong("beach");
         }}
         id="beach"
-        ref={background === "beach" ? bgSound : beach}
+        ref={
+          background === "beach" && isBgRelated
+            ? bgSound
+            : beach
+        }
         // ref={beach}
+      ></audio>
+      {/* RELAX BACKGROUND */}
+      <audio
+        src={require("../assets/sound/relax-background.mp3")}
+        // onPlaying={() => {
+        //   setCurrentBgSong("relax");
+        // }}
+        loop
+        id="relax"
+        ref={!isBgRelated ? bgSound : relax}
       ></audio>
     </div>
   );
 }
 
 export default Background;
+
+// useEffect(() => {
+//   if (isBgRelated === false && isLandingOpen === false) {
+//     bgSound.current.pause();
+//   } else if (
+//     isBgRelated &&
+//     !isMuted &&
+//     isLandingOpen === false
+//   ) {
+//     bgSound.current.load();
+//     bgSound.current.volume = bgSoundVolume;
+//     bgSound.current.play();
+//   }
+// }, [isBgRelated, isLandingOpen]);
+
+// useEffect(() => {
+//   bgSound.current.volume = bgSoundVolume;
+// }, [bgSoundVolume]);
+
+// useEffect(() => {
+//   if (timerOn === true) {
+//     bgSound.current.pause();
+//   }
+//   if (
+//     timerOn === false &&
+//     !isMuted &&
+//     isLandingOpen === false
+//   ) {
+//     bgSound.current.play();
+//   }
+// }, [timerOn]);

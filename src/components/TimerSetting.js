@@ -35,7 +35,7 @@ function TimerSetting({
       } text-xl md:text-3xl`}
     >
       <AiOutlineCloseCircle
-        className="absolute top-5 right-5 text-3xl cursor-pointer"
+        className="absolute top-5 right-5 text-3xl cursor-pointer z-30"
         onClick={() => {
           setIsTimerSettingOpen(false);
         }}

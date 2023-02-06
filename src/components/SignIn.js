@@ -20,6 +20,13 @@ function SignIn() {
     bgColor,
   } = useGlobalContext();
   const [showPass, setShowPass] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div
       className={`sign-in absolute top-[calc(50%-40%)] left-[calc(50%-40%)] flex justify-center ${bgColor} w-[80%] h-[70%] lg:h-[80%] rounded-lg duration-500 text-white text-base md:text-3xl ${
@@ -37,25 +44,29 @@ function SignIn() {
           </div>
         </div>
         <form
-          action="submit"
+          onSubmit={handleSubmit}
           className="flex flex-col w-full  gap-10 text-lg"
         >
           <div className="input-field  relative w-full flex items-center ">
-            <AiFillMail className="absolute left-5 text-xl md:text-2xl  lg:text-3xl" />
+            <AiFillMail className="absolute left-5 text-xl md:text-2xl  lg:text-3xl " />
             <input
-              className="bg-[#5c5c5c]/50 h-12 md:h-16 w-full border-[1px] border-[#ffffff] rounded-md pl-12 md:text-3xl "
+              className="bg-[#5c5c5c]/50 h-12 md:h-16 w-full border-[1px] border-[#ffffff] rounded-md pl-12 lg:pl-16 md:text-3xl "
               placeholder="this.is.a.mail@mail"
               type="email"
               required
+              value={email}
+              onChange={(event)=>setEmail(event.target.value)}
             />
           </div>
           <div className="input-field relative w-full flex items-center">
             <BsKeyFill className="absolute left-5 text-xl md:text-2xl  lg:text-3xl" />
             <input
-              className="bg-[#5c5c5c]/50 h-12 md:h-16 w-full border-[1px] border-[#ffffff] rounded-md pl-12 md:text-3xl"
-              placeholder="************"
+              className="bg-[#5c5c5c]/50 h-12 md:h-16 w-full border-[1px] border-[#ffffff] rounded-md pl-12 lg:pl-16 md:text-3xl"
+              placeholder="password"
               type={showPass ? "text" : "password"}
               required
+                 value={password}
+              onChange={(event)=>setPassword(event.target.value)}
             />
             <div
               className="visibility-toggler absolute right-5 text-xl lg:text-2xl"
@@ -85,7 +96,7 @@ function SignIn() {
             remember
           </div>
           <button
-            type="button"
+            type="submit"
             className="sign-in-btn bg-[#464cda] rounded-md h-12"
           >
             Sign in
