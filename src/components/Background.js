@@ -18,13 +18,9 @@ function Background() {
     bgSound,
   } = useGlobalContext();
 
-  const [currentBgSong, setCurrentBgSong] = useState("");
   const rain = useRef();
   const beach = useRef();
   const relax = useRef();
-  // useEffect(() => {
-  // console.log(bgSound.current.id)
-  // }, [background,isBgRelated])
 
   // VOLUME/MUTE MANAGEMENT
   useEffect(() => {
@@ -54,15 +50,6 @@ function Background() {
     localStorage.setItem("background", background);
   }, [background, isBgRelated]);
 
-  // useEffect(() => {
-  //   if (!isBgRelated && !isMuted && !isLandingOpen) {
-  //     bgSound.current.pause();
-  //     relax.current.play();
-  //   } else if (isBgRelated && !isMuted && !isLandingOpen) {
-  //     relax.current.pause();
-  //   }
-  // }, [isBgRelated]);
-
   return (
     <div>
       {/* <button
@@ -83,6 +70,18 @@ function Background() {
             : "-z-50 opacity-0"
         }`}
       />
+
+      {/* RAIN SOUND */}
+      <audio
+        src={require("../assets/sound/rain.mp3")}
+        id="rain"
+        ref={
+          background === "rain" && isBgRelated
+            ? bgSound
+            : rain
+        }
+      ></audio>
+      {/* BEACH */}
       <img
         src={require("../assets/video/beach.gif")}
         alt=""
@@ -92,28 +91,9 @@ function Background() {
             : "-z-50 opacity-0"
         }`}
       />
-
-      {/* RAIN SOUND */}
-      <audio
-        src={require("../assets/sound/rain.mp3")}
-        onPlaying={() => {
-          setCurrentBgSong("rain");
-        }}
-        id="rain"
-        ref={
-          background === "rain" && isBgRelated
-            ? bgSound
-            : rain
-        }
-      ></audio>
-      {/* BEACH */}
-
       {/* BEACH SOUND */}
       <audio
         src={require("../assets/sound/beach.mp3")}
-        onPlaying={() => {
-          setCurrentBgSong("beach");
-        }}
         id="beach"
         ref={
           background === "beach" && isBgRelated
@@ -125,9 +105,6 @@ function Background() {
       {/* RELAX BACKGROUND */}
       <audio
         src={require("../assets/sound/relax-background.mp3")}
-        // onPlaying={() => {
-        //   setCurrentBgSong("relax");
-        // }}
         loop
         id="relax"
         ref={!isBgRelated ? bgSound : relax}
@@ -137,34 +114,3 @@ function Background() {
 }
 
 export default Background;
-
-// useEffect(() => {
-//   if (isBgRelated === false && isLandingOpen === false) {
-//     bgSound.current.pause();
-//   } else if (
-//     isBgRelated &&
-//     !isMuted &&
-//     isLandingOpen === false
-//   ) {
-//     bgSound.current.load();
-//     bgSound.current.volume = bgSoundVolume;
-//     bgSound.current.play();
-//   }
-// }, [isBgRelated, isLandingOpen]);
-
-// useEffect(() => {
-//   bgSound.current.volume = bgSoundVolume;
-// }, [bgSoundVolume]);
-
-// useEffect(() => {
-//   if (timerOn === true) {
-//     bgSound.current.pause();
-//   }
-//   if (
-//     timerOn === false &&
-//     !isMuted &&
-//     isLandingOpen === false
-//   ) {
-//     bgSound.current.play();
-//   }
-// }, [timerOn]);

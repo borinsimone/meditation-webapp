@@ -82,7 +82,7 @@ const ContextProvider = ({ children }) => {
   const [isLandingOpen, setIsLandingOpen] = useState(true);
 
   let rainColor = "bg-slate-600";
-  let beachColor = "bg-[#EE5C42]";
+  let beachColor = "bg-[#FA9A50]";
   let bgColor =
     background === "rain" ? rainColor : beachColor;
   // const [bgColor, setBgColor] = useState(
