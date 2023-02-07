@@ -17,8 +17,8 @@ function App() {
     setIsMenuOpen,
     toggleMenu,
     isSigninOpen,
-    setIsSigninOpen,
-    toggleSignin,
+    setIsSignInOpen,
+    toggleSignIn,
     isTimerOpen,
     setIsTimerOpen,
     background,
@@ -50,14 +50,14 @@ function App() {
           alt=""
         />
         <div
-          className={`main-icon absolute bottom-[10vh]  left-0 w-full grid place-content-center  `}
+          className={`main-icon absolute bottom-[10vh]  left-0 w-full grid place-content-center   `}
         >
           <GiLotus
-            className=" text-[70px] md:text-[120px] text-white cursor-pointer select-none"
+            className=" text-[70px] md:text-[100px] text-white cursor-pointer select-none"
             onClick={() => {
               setIsTimerOpen(!isTimerOpen);
               setIsMenuOpen(false);
-              setIsSigninOpen(false);
+              setIsSignInOpen(false);
             }}
           />
         </div>

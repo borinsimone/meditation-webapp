@@ -9,9 +9,9 @@ import {
 import { BsKeyFill } from "react-icons/bs";
 function SignIn() {
   const {
-    isSigninOpen,
-    setIsSigninOpen,
-    toggleSignin,
+    isSignInOpen,
+    setIsSignInOpen,
+    toggleSignIn,
     remember,
     setRemember,
     toggleRemember,
@@ -30,7 +30,7 @@ function SignIn() {
   return (
     <div
       className={`sign-in absolute top-[calc(50%-40%)] left-[calc(50%-40%)] flex justify-center ${bgColor} w-[80%] h-[70%] lg:h-[80%] rounded-lg duration-500 text-white text-base md:text-3xl ${
-        isSigninOpen ? "opacity-1 z-50" : "opacity-0 -z-10"
+        isSignInOpen ? "opacity-1 z-50" : "opacity-0 -z-10"
       } `}
     >
       <div className="h-full w-full md:w-[80%] p-10 flex flex-col items-start justify-center gap-10 rounded-xl ">
@@ -55,7 +55,9 @@ function SignIn() {
               type="email"
               required
               value={email}
-              onChange={(event)=>setEmail(event.target.value)}
+              onChange={(event) =>
+                setEmail(event.target.value)
+              }
             />
           </div>
           <div className="input-field relative w-full flex items-center">
@@ -65,8 +67,10 @@ function SignIn() {
               placeholder="password"
               type={showPass ? "text" : "password"}
               required
-                 value={password}
-              onChange={(event)=>setPassword(event.target.value)}
+              value={password}
+              onChange={(event) =>
+                setPassword(event.target.value)
+              }
             />
             <div
               className="visibility-toggler absolute right-5 text-xl lg:text-2xl"

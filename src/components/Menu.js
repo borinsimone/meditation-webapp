@@ -16,28 +16,15 @@ function Menu() {
     bgSound,
     bgColor,
   } = useGlobalContext();
-  const [previousVolume, setPreviousVolume] = useState(
-    () => {
-      const data = localStorage.getItem("previousVolume");
-      if (data !== null) {
-        const parsedData = JSON.parse(data);
-        return parsedData;
-      } else {
-        return 0.2;
-      }
-    }
-  );
-  useEffect(() => {
-    localStorage.setItem("previousVolume", previousVolume);
-  }, [previousVolume]);
 
   return (
     <div
-      className={`${bgColor} bg-opacity-60 w-full h-[93%] absolute duration-500 bottom-0 z-50 flex flex-col items-center md:pt-20 md:gap-10 p-10
+      className={`${bgColor} bg-opacity-70 backdrop-blur-md  w-full h-[93%] absolute duration-500 bottom-0 z-50 flex flex-col items-center md:pt-20 md:gap-10 p-10
        text-white ${
          isMenuOpen ? "left-0" : "-left-[100%]"
        }`}
     >
+      {/* BACKGROUND SETTINGS */}
       <div className="change-background md:w-[90%] h-20  md:text-2xl flex gap-2 items-center justify-between">
         Choose your background:
         <div className="btn-container flex gap-3">
@@ -74,6 +61,7 @@ function Menu() {
         </div>
       </div>
 
+      {/* BACKGROUND MUSIC SETTINGS */}
       <div className="change-background-music md:w-[90%] h-20  md:text-2xl flex gap-2 items-center justify-between">
         Choose your background music:
         <div className="btn-container flex gap-3">
@@ -108,13 +96,15 @@ function Menu() {
         </div>
       </div>
 
+      {/* BACKGROUND VOLUME SETTINGS */}
+
       <div className="bg-volume-management relative md:w-[90%] h-20  md:text-2xl flex gap-2 items-center justify-between">
-        set background volume
+        Background volume:
         <input
           className="volume-slider cursor-pointer"
           type="range"
           min={0}
-          max={0.7}
+          max={0.5}
           step={0.01}
           value={bgSoundVolume}
           onChange={(event) => {
@@ -136,18 +126,17 @@ function Menu() {
             setIsMuted(!isMuted);
             if (isMuted === true) {
             } else {
+              return;
             }
           }}
         >
-          {bgSoundVolume === 0 || isMuted ? (
+          {isMuted ? (
             <GoMute className="text-2xl md:text-4xl" />
           ) : (
             <GoUnmute className="text-2xl md:text-4xl" />
           )}
         </button>
       </div>
-
-      <div className="test bg-green-500 mt-10"></div>
     </div>
   );
 }

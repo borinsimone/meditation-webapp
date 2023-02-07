@@ -8,8 +8,8 @@ function Navbar() {
     setIsMenuOpen,
     toggleMenu,
     isSigninOpen,
-    setIsSigninOpen,
-    toggleSignin,
+    setIsSignInOpen,
+    toggleSignIn,
     isTimerOpen,
     setIsTimerOpen,
     bgColor,
@@ -26,7 +26,7 @@ function Navbar() {
       </div>
       <div
         className="user-icon text-white text-2xl md:text-4xl cursor-pointer"
-        onClick={toggleSignin}
+        onClick={toggleSignIn}
       >
         <FaUserAlt />
       </div>

@@ -4,7 +4,6 @@ import React, {
   useContext,
   useRef,
 } from "react";
-import rain from "../assets/sound/rain.mp3";
 
 const GlobalContext = React.createContext();
 
@@ -13,14 +12,14 @@ const ContextProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setIsSigninOpen(false);
+    setIsSignInOpen(false);
   };
   //SIGN IN CONTEXT
-  const [isSigninOpen, setIsSigninOpen] = useState(false);
-  const toggleSignin = () => {
+  const [isSignInOpen, setIsSignInOpen] = useState(false);
+  const toggleSignIn = () => {
     setIsMenuOpen(false);
     setIsTimerOpen(false);
-    setIsSigninOpen(!isSigninOpen);
+    setIsSignInOpen(!isSignInOpen);
   };
 
   const [remember, setRemember] = useState(true);
@@ -34,7 +33,7 @@ const ContextProvider = ({ children }) => {
   const [timerOn, setTimerOn] = useState(false);
   //MEDITATION SETTING CONTEXT
   const [currentSong, setCurrentSong] = useState("");
-  // BACKGROUND CONTEXT
+  // BACKGROUND & VOLUME CONTEXT
   const [background, setBackground] = useState(() => {
     const data = localStorage.getItem("background");
     if (data !== null) {
@@ -76,7 +75,6 @@ const ContextProvider = ({ children }) => {
 
   const [isBgRelated, setIsBgRelated] = useState(true);
 
-  
   const bgSound = useRef();
 
   const [isLandingOpen, setIsLandingOpen] = useState(true);
@@ -95,9 +93,9 @@ const ContextProvider = ({ children }) => {
         isMenuOpen,
         setIsMenuOpen,
         toggleMenu,
-        isSigninOpen,
-        setIsSigninOpen,
-        toggleSignin,
+        isSignInOpen,
+        setIsSignInOpen,
+        toggleSignIn,
         remember,
         setRemember,
         toggleRemember,
