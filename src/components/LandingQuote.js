@@ -77,7 +77,6 @@ function LandingQuote() {
           {author}
         </div>
         <div className="go-next">
-          <button onClick={getQuotes}>ciao</button>
           <button
             className=" py-1 px-3 mt-6 rounded-lg bg-indigo-700 hover:bg-[#330c59]  duration-500"
             onClick={() => {
