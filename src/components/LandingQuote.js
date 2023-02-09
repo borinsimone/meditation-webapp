@@ -24,34 +24,18 @@ function LandingQuote() {
   };
   const [quote, setQuote] = useState(null);
   const [author, setAuthor] = useState(null);
-
+  const [data, setData] = useState(null);
   const getQuotes = () => {
     axios
       .get(url, config)
       .then((res) => {
-        console.log(res);
-        setQuote(res.data[0].quote);
-        setAuthor(res.data[0].author);
+        setData(res.data[0]);
+        console.log(data);
       })
       .catch((error) => console.error(error));
   };
+
   useEffect(() => {
-    // if (quote === null) {
-    //   axios
-    //     .get(url, config)
-    //     .then((res) => {
-    //       console.log(res);
-    //       setQuote(res.data[0].quote);
-    //       setAuthor(res.data[0].author);
-    //     })
-    //     .catch((error) => console.error(error));
-    // }
-    // if (quote === "") {
-    //   // getQuotes();
-    //   console.log("chiamata API");
-    // } else {
-    //   console.log(quote);
-    // }
     getQuotes();
   }, []);
 
@@ -66,16 +50,17 @@ function LandingQuote() {
         Use headphone for optimal experience
       </div>
       <div className="quote-container w-full h-[40%] flex flex-col justify-center items-center">
-        <div className="quote w-[80%]">
+        <div className="quote w-[80%] text-center">
           {/* Only those who have learned the power of sincere
           and selfless contribution experience life's
           deepest joy: true fulfillment. */}
-          {quote}
+          {data ? data.quote : "loading..."}
         </div>
         <div className="author  w-[70%] flex justify-end tracking-wide text-sm ">
           {/* Tony Robbins */}
-          {author}
+          {data ? data.author : ""}
         </div>
+        {/* <button onClick={getQuotes}>ciao</button> */}
         <div className="go-next">
           <button
             className=" py-1 px-3 mt-6 rounded-lg bg-indigo-700 hover:bg-[#330c59]  duration-500"
