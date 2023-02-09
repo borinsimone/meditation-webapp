@@ -14,27 +14,46 @@ function LandingQuote() {
     bgColor,
   } = useGlobalContext();
   const url =
-    // "https://api.api-ninjas.com/v1/quotes?category=inspirational";
-    "https://dummyjson.com/products";
+    "https://api.api-ninjas.com/v1/quotes?category=inspirational";
+  // "https://dummyjson.com/products";
   let config = {
     headers: {
       "X-Api-Key":
         "pnJLrED905ZrTmnWS88uoQ==XtlBWnzorkutt0Ig",
     },
   };
-  const [quote, setQuote] = useState("");
-  const [author, setAuthor] = useState("");
+  const [quote, setQuote] = useState(null);
+  const [author, setAuthor] = useState(null);
 
-  //   const getQuotes = () => {
-  //     axios.get(url, config).then((res) => {
-  //       console.log(res);
-  //       setQuote(res.data[0].quote);
-  //       setAuthor(res.data[0].author);
-  //     });
-  //   };
-  //   useEffect(() => {
-  //     getQuotes();
-  //   }, []);
+  const getQuotes = () => {
+    axios
+      .get(url, config)
+      .then((res) => {
+        console.log(res);
+        setQuote(res.data[0].quote);
+        setAuthor(res.data[0].author);
+      })
+      .catch((error) => console.error(error));
+  };
+  useEffect(() => {
+    // if (quote === null) {
+    //   axios
+    //     .get(url, config)
+    //     .then((res) => {
+    //       console.log(res);
+    //       setQuote(res.data[0].quote);
+    //       setAuthor(res.data[0].author);
+    //     })
+    //     .catch((error) => console.error(error));
+    // }
+    // if (quote === "") {
+    //   // getQuotes();
+    //   console.log("chiamata API");
+    // } else {
+    //   console.log(quote);
+    // }
+    getQuotes();
+  }, []);
 
   return (
     <div
@@ -48,16 +67,17 @@ function LandingQuote() {
       </div>
       <div className="quote-container w-full h-[40%] flex flex-col justify-center items-center">
         <div className="quote w-[80%]">
-          Only those who have learned the power of sincere
+          {/* Only those who have learned the power of sincere
           and selfless contribution experience life's
-          deepest joy: true fulfillment.
-          {/* {quote} */}
+          deepest joy: true fulfillment. */}
+          {quote}
         </div>
-        <div className="author  w-[70%] flex justify-end tracking-wide ">
-          Tony Robbins
-          {/* {author} */}
+        <div className="author  w-[70%] flex justify-end tracking-wide text-sm ">
+          {/* Tony Robbins */}
+          {author}
         </div>
         <div className="go-next">
+          <button onClick={getQuotes}>ciao</button>
           <button
             className=" py-1 px-3 mt-6 rounded-lg bg-indigo-700 hover:bg-[#330c59]  duration-500"
             onClick={() => {
