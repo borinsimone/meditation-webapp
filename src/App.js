@@ -42,11 +42,11 @@ function App() {
         <Background />
         <Menu />
         <div className="title text-white text-2xl md:text-4xl w-full text-center absolute top-[10vh]">
-          Your journey start from you
+          Your journey start from You
         </div>
         <img
           src={meditationLogo}
-          className="absolute top-[30%] md:top-[20%] left-[calc(50%-200px)] h-[400px] aspect-square"
+          className="absolute top-[30%] md:top-[20%] lg:top-[30%] left-[calc(50%-200px)] h-[400px] aspect-square"
           alt=""
         />
         <div

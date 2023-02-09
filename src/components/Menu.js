@@ -115,12 +115,12 @@ function Menu() {
             console.log("ciao");
           }}
         />
-        <div
+        {/* <div
           className="be-careful absolute  p-2 right-[10%] -bottom-10 bg-black 
         "
         >
           the sound could be very loud
-        </div>
+        </div> */}
         <button
           onClick={() => {
             setIsMuted(!isMuted);
