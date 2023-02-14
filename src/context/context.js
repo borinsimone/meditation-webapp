@@ -12,24 +12,11 @@ const ContextProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setIsSignInOpen(false);
-  };
-  //SIGN IN CONTEXT
-  const [isSignInOpen, setIsSignInOpen] = useState(false);
-  const toggleSignIn = () => {
-    setIsMenuOpen(false);
-    setIsTimerOpen(false);
-    setIsSignInOpen(!isSignInOpen);
   };
 
-  const [remember, setRemember] = useState(true);
-  const toggleRemember = () => {
-    setRemember(!remember);
-  };
   //MEDITATION CONTEXT
   const [isTimerOpen, setIsTimerOpen] = useState(false);
 
-  const [isFormOpen, setIsFormOpen] = useState(true);
   const [timerOn, setTimerOn] = useState(false);
   //MEDITATION SETTING CONTEXT
   const [currentSong, setCurrentSong] = useState("");
@@ -54,7 +41,6 @@ const ContextProvider = ({ children }) => {
   });
   useEffect(() => {
     localStorage.setItem("bgSoundVolume", bgSoundVolume);
-    // console.log("suono cambia");
   }, [bgSoundVolume]);
   const [isMuted, setIsMuted] = useState(() => {
     const data = localStorage.getItem("isMuted");
@@ -70,7 +56,6 @@ const ContextProvider = ({ children }) => {
       "isMuted",
       JSON.stringify(isMuted)
     );
-    console.log("ismuted", isMuted);
   }, [isMuted]);
 
   const [isBgRelated, setIsBgRelated] = useState(true);
@@ -83,9 +68,6 @@ const ContextProvider = ({ children }) => {
   let beachColor = "bg-[#FA9A50]";
   let bgColor =
     background === "rain" ? rainColor : beachColor;
-  // const [bgColor, setBgColor] = useState(
-  //   background === "rain" ? rainColor : beachColor
-  // );
 
   return (
     <GlobalContext.Provider
@@ -93,19 +75,10 @@ const ContextProvider = ({ children }) => {
         isMenuOpen,
         setIsMenuOpen,
         toggleMenu,
-        isSignInOpen,
-        setIsSignInOpen,
-        toggleSignIn,
-        remember,
-        setRemember,
-        toggleRemember,
-        isFormOpen,
-        setIsFormOpen,
         isTimerOpen,
         setIsTimerOpen,
         background,
         setBackground,
-
         timerOn,
         setTimerOn,
         currentSong,
@@ -119,8 +92,6 @@ const ContextProvider = ({ children }) => {
         isLandingOpen,
         setIsLandingOpen,
         bgSound,
-        rainColor,
-        beachColor,
         bgColor,
       }}
     >

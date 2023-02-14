@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useGlobalContext } from "../context/context";
 import { GoUnmute, GoMute } from "react-icons/go";
 
@@ -19,7 +19,7 @@ function Menu() {
 
   return (
     <div
-      className={`${bgColor} bg-opacity-70 backdrop-blur-md  w-full h-[93%] absolute duration-500 bottom-0 z-50 flex flex-col items-center md:pt-20 md:gap-10 p-10
+      className={`${bgColor} bg-opacity-70 backdrop-blur-md  w-full h-full absolute duration-500 bottom-0 z-50 flex flex-col items-center md:pt-20 md:gap-10 p-10
        text-white ${
          isMenuOpen ? "left-0" : "-left-[100%]"
        }`}
@@ -112,15 +112,8 @@ function Menu() {
           }}
           onTouchEnd={(event) => {
             setBgSoundVolume(event.target.value);
-            console.log("ciao");
           }}
         />
-        {/* <div
-          className="be-careful absolute  p-2 right-[10%] -bottom-10 bg-black 
-        "
-        >
-          the sound could be very loud
-        </div> */}
         <button
           onClick={() => {
             setIsMuted(!isMuted);

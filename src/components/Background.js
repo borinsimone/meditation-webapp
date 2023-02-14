@@ -1,20 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGlobalContext } from "../context/context";
 
 function Background() {
   const {
     background,
-    setBackground,
-    timerOn,
-    setTimerOn,
     bgSoundVolume,
-    setBgSoundVolume,
     isBgRelated,
-    setIsBgRelated,
     isLandingOpen,
-    setIsLandingOpen,
     isMuted,
-    setIsMuted,
     bgSound,
   } = useGlobalContext();
 
@@ -40,8 +33,7 @@ function Background() {
 
   useEffect(() => {
     bgSound.current.pause();
-    console.log(bgSound.current.id);
-    console.log(isBgRelated);
+
     if (!isMuted && !isLandingOpen) {
       bgSound.current.load();
       bgSound.current.volume = bgSoundVolume;
@@ -52,14 +44,6 @@ function Background() {
 
   return (
     <div>
-      {/* <button
-        className="absolute top-20  w-24 bg-black z-50 text-white"
-        onClick={() => {
-          localStorage.clear();
-        }}
-      >
-        {bgSound.current ? bgSound.current.volume : ""}
-      </button> */}
       {/* RAIN */}
       <img
         src={require("../assets/video/rain.gif")}
@@ -100,7 +84,6 @@ function Background() {
             ? bgSound
             : beach
         }
-        // ref={beach}
       ></audio>
       {/* RELAX BACKGROUND */}
       <audio

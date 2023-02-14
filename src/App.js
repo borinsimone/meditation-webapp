@@ -1,36 +1,27 @@
-import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
-import SignIn from "./components/SignIn";
 import Timer from "./components/Timer";
 import LandingQuote from "./components/LandingQuote";
 import meditationLogo from "./assets/images/zen-meditation.png";
-import beach from "./assets/video/beach.mp4";
-import rain from "./assets/video/rain.mp4";
 import Background from "./components/Background";
-import { useState } from "react";
 import { useGlobalContext } from "./context/context";
 import { GiLotus } from "react-icons/gi";
+import { BsFillGearFill } from "react-icons/bs";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 function App() {
   const {
-    isMenuOpen,
     setIsMenuOpen,
-    toggleMenu,
-    isSigninOpen,
-    setIsSignInOpen,
-    toggleSignIn,
+    isMenuOpen,
     isTimerOpen,
     setIsTimerOpen,
-    background,
     bgColor,
+    toggleMenu,
   } = useGlobalContext();
   let vh = window.innerHeight * 0.01;
   document.documentElement.style.setProperty(
     "--vh",
     `${vh}px`
   );
-  // console.log(window.innerHeight);
-  // console.log(localStorage);
 
   return (
     <div
@@ -50,19 +41,27 @@ function App() {
           alt=""
         />
         <div
-          className={`main-icon absolute bottom-[10vh]  left-0 w-full grid place-content-center   `}
+          className={`main-icon absolute bottom-[15vh]  left-0 w-full grid place-content-center   `}
         >
           <GiLotus
             className=" text-[70px] md:text-[100px] text-white cursor-pointer select-none"
             onClick={() => {
               setIsTimerOpen(!isTimerOpen);
               setIsMenuOpen(false);
-              setIsSignInOpen(false);
             }}
           />
         </div>
-        <Navbar />
-        <SignIn />
+        <div
+          className="menu-icon absolute bottom-[5vh]  left-0 w-full grid place-content-center z-50  "
+          onClick={toggleMenu}
+        >
+          {isMenuOpen ? (
+            <AiOutlineCloseCircle className=" text-[40px] md:text-[70px] text-white cursor-pointer select-none" />
+          ) : (
+            <BsFillGearFill className=" text-[40px] md:text-[70px] text-white cursor-pointer select-none" />
+          )}
+        </div>
+
         <Timer />
       </div>
     </div>

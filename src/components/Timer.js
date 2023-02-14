@@ -3,8 +3,8 @@ import "../index.css";
 import { useGlobalContext } from "../context/context";
 import end_meditation_bell from "../assets/sound/end_meditation.mp3";
 
-import waterFlowingSound from "../assets/sound/meditation sound/Water Flowing And Birds.wav";
-import waterfallSound from "../assets/sound/meditation sound/Small Waterfall.wav";
+import waterFlowingSound from "../assets/sound/meditation sound/Water_Flowing_And_Birds.wav";
+import waterfallSound from "../assets/sound/meditation sound/Small_Waterfall.wav";
 
 import songs from "../assets/sound/meditation sound/song.json";
 import {
@@ -23,7 +23,6 @@ function Timer() {
     setIsTimerOpen,
     timerOn,
     setTimerOn,
-    rainSound,
     bgColor,
   } = useGlobalContext();
 
@@ -63,13 +62,10 @@ function Timer() {
   }, [isTimerOpen]);
 
   useEffect(() => {
-    console.log("startingMinute cambiato");
     setSeconds(Math.floor(time % 60));
     setMinutes(Math.floor(time / 60));
   }, [startingMinute]);
-  useEffect(() => {
-    console.log(time);
-  }, [time]);
+  useEffect(() => {}, [time]);
   const [volume, setVolume] = useState(0.0);
 
   const [isTimerEnded, setIsTimerEnded] = useState(false);
@@ -149,7 +145,6 @@ function Timer() {
       currentSong.pause();
 
       setVolume(0.0);
-      console.log("ciao");
     }
     return () => {
       clearInterval(volumeInterval);
@@ -162,8 +157,6 @@ function Timer() {
 
   const handleChange = (event) => {
     event.preventDefault();
-
-    console.log(event.target.value);
   };
   const resetTimer = () => {
     setSeconds(Math.floor(time % 60));
@@ -223,16 +216,6 @@ function Timer() {
         className={`counter-container border relative ${bgColor} w-[80%] h-[40%] md:w-[70%] md:h-[40%]  flex items-center justify-center rounded-md`}
       >
         <div className=" relative counter text-6xl md:text-9xl ">
-          {/* <button
-            className="absolute left-0 text-lg bg-red-700 p-5"
-            onClick={() => {
-              console.log("volume" + currentSong.volume);
-              console.log("userVolume" + userVolume);
-              console.log(time);
-            }}
-          >
-            test song
-          </button> */}
           {minutes}:{seconds < 10 ? "0" + seconds : seconds}{" "}
         </div>
       </div>
@@ -267,7 +250,6 @@ function Timer() {
             value={userVolume}
             onChange={(event) => {
               setUserVolume(event.target.valueAsNumber);
-              console.log(userVolume);
             }}
           />
           <button
