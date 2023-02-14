@@ -2,10 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import "../index.css";
 import { useGlobalContext } from "../context/context";
 import end_meditation_bell from "../assets/sound/end_meditation.mp3";
-
 import waterFlowingSound from "../assets/sound/meditation sound/Water_Flowing_And_Birds.wav";
 import waterfallSound from "../assets/sound/meditation sound/Small_Waterfall.wav";
-
 import songs from "../assets/sound/meditation sound/song.json";
 import {
   BsFillPlayFill,
@@ -13,10 +11,10 @@ import {
   BsFillGearFill,
 } from "react-icons/bs";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-
 import { RiRestartLine } from "react-icons/ri";
 import { GoUnmute, GoMute } from "react-icons/go";
 import TimerSetting from "./TimerSetting";
+
 function Timer() {
   const {
     isTimerOpen,
