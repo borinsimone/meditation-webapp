@@ -102,7 +102,6 @@ function Timer() {
   }, [timerOn, seconds, minutes]);
 
   useEffect(() => {
-    //VOLUME TEST
     let volumeInterval;
     if (timerOn && currentSong !== "") {
       currentSong.volume = volume;

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .App {
-  height: 100vh; /* Use vh as a fallback for browsers that do not support Custom Properties */
+  height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
 }
 video {
@@ -20,52 +20,7 @@ video {
   position: fixed;
   z-index: 0;
 }
-// .quote-container {
-//   // background: rgb(128, 0, 128);
-//   background: -moz-linear-gradient(
-//     0deg,
-//     rgba(71, 85, 105, 1) 0%,
-//     rgb(150, 204, 219) 50%,
-//     rgba(71, 85, 105, 1) 100%
-//   );
-//   background: -webkit-linear-gradient(
-//     0deg,
-//     rgba(71, 85, 105, 1) 0%,
-//     rgb(150, 204, 219) 50%,
-//     rgba(71, 85, 105, 1) 100%
-//   );
-//   background: linear-gradient(
-//     0deg,
-//     rgba(71, 85, 105, 1) 0%,
-//     rgb(150, 204, 219) 50%,
-//     rgba(71, 85, 105, 1) 100%
-//   );
-//   // filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#800080",endColorstr="#800080",GradientType=1);
-// }
 
-// .main-icon::before {
-//   content: "";
-//   position: absolute;
-//   height: 20px;
-//   aspect-ratio: 1;
-//   top: 50%;
-//   left: -15px;
-//   // background-color: red;
-//   background-color: #a86ab300;
-//   border-top-right-radius: 20px;
-//   box-shadow: 0px -10px 0 0 #211721;
-// }
-// .main-icon::after {
-//   content: "";
-//   position: absolute;
-//   height: 20px;
-//   aspect-ratio: 1;
-//   top: 50%;
-//   right: -16px;
-//   // background-color: #a86ab3;
-//   border-top-left-radius: 20px;
-//   box-shadow: 0px -10px 0 0 #211721;
-// }
 .utility-shadow {
   background: rgb(33, 23, 33);
   background: -moz-linear-gradient(
@@ -96,14 +51,8 @@ video {
   -webkit-box-shadow: 0px 0px 28px 14px #00000073;
   box-shadow: 0px 0px 28px 14px #00000073;
 }
-//MENU
+
 button {
   text-transform: capitalize;
   user-select: none;
-}
-
-//VOLUME SLIDER
-
-//PLAYER
-.ytPlayer {
 }
