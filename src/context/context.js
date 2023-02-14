@@ -18,8 +18,7 @@ const ContextProvider = ({ children }) => {
   const [isTimerOpen, setIsTimerOpen] = useState(false);
 
   const [timerOn, setTimerOn] = useState(false);
-  //MEDITATION SETTING CONTEXT
-  const [currentSong, setCurrentSong] = useState("");
+
   // BACKGROUND & VOLUME CONTEXT
   const [background, setBackground] = useState(() => {
     const data = localStorage.getItem("background");
@@ -81,8 +80,7 @@ const ContextProvider = ({ children }) => {
         setBackground,
         timerOn,
         setTimerOn,
-        currentSong,
-        setCurrentSong,
+
         bgSoundVolume,
         setBgSoundVolume,
         isBgRelated,

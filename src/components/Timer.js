@@ -23,7 +23,6 @@ function Timer() {
     setTimerOn,
     bgColor,
     isMuted,
-    setIsMuted,
     bgSoundVolume,
     setBgSoundVolume,
   } = useGlobalContext();
@@ -66,7 +65,7 @@ function Timer() {
   useEffect(() => {
     setSeconds(Math.floor(time % 60));
     setMinutes(Math.floor(time / 60));
-  }, [startingMinute]);
+  }, [startingMinute, time]);
   useEffect(() => {}, [time]);
   const [volume, setVolume] = useState(0.0);
 
