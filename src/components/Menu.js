@@ -118,10 +118,6 @@ function Menu() {
         <button
           onClick={() => {
             setIsMuted(!isMuted);
-            if (isMuted === true) {
-            } else {
-              return;
-            }
           }}
         >
           {isMuted ? (

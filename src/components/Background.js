@@ -27,6 +27,7 @@ function Background() {
     }
   }, [isMuted]);
 
+
   useEffect(() => {
     bgSound.current.volume = bgSoundVolume;
   }, [bgSoundVolume]);

@@ -22,6 +22,10 @@ function Timer() {
     timerOn,
     setTimerOn,
     bgColor,
+    isMuted,
+    setIsMuted,
+    bgSoundVolume,
+    setBgSoundVolume,
   } = useGlobalContext();
 
   const [endMeditationSound, setEndMeditationSound] =
@@ -66,7 +70,6 @@ function Timer() {
   useEffect(() => {}, [time]);
   const [volume, setVolume] = useState(0.0);
 
-  const [isTimerEnded, setIsTimerEnded] = useState(false);
   const [userVolume, setUserVolume] = useState(0.7);
 
   useEffect(() => {
@@ -83,9 +86,8 @@ function Timer() {
     }
     if (timerOn && minutes === 0 && seconds === 0) {
       setTimerOn(false);
-      setIsTimerEnded(true);
       clearInterval(interval);
-      if (endMeditationSound) {
+      if (endMeditationSound && isTimerOpen) {
         let end_meditation_sound = new Audio(
           end_meditation_bell
         );
@@ -172,6 +174,9 @@ function Timer() {
   useEffect(() => {
     if (isTimerSettingOpen) {
       setTimerOn(false);
+      if (prevBgVolume) {
+        setBgSoundVolume(prevBgVolume);
+      }
     }
   }, [isTimerSettingOpen]);
 
@@ -182,6 +187,7 @@ function Timer() {
   let waterfall_Sound = new Audio(waterfallSound);
 
   const songList = [waterFlowing_Sound, waterfall_Sound];
+  const [prevBgVolume, setPrevBgVolume] = useState();
   return (
     <div
       className={`timer-container text-white absolute top-[calc(45%-30%)] left-[calc(50%-40%)] lg:left-[calc(50%-25%)] rounded
@@ -222,13 +228,22 @@ function Timer() {
           {timerOn ? (
             <BsFillPauseFill
               className="text-5xl md:text-7xl cursor-pointer"
-              onClick={() => setTimerOn(!timerOn)}
+              onClick={() => {
+                setTimerOn(!timerOn);
+                if (!isMuted) {
+                  setBgSoundVolume(prevBgVolume);
+                }
+              }}
             />
           ) : (
             <BsFillPlayFill
               className="text-5xl md:text-7xl cursor-pointer"
               onClick={() => {
                 setTimerOn(!timerOn);
+                if (!isMuted) {
+                  setPrevBgVolume(bgSoundVolume);
+                  setBgSoundVolume(0);
+                }
               }}
             />
           )}
@@ -242,7 +257,7 @@ function Timer() {
             className="volume-slider "
             type="range"
             min={0}
-            max={0.98}
+            max={0.4}
             step={0.02}
             value={userVolume}
             onChange={(event) => {
