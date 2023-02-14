@@ -19,7 +19,8 @@ function Menu() {
 
   return (
     <div
-      className={`${bgColor} bg-opacity-70 backdrop-blur-md  w-full h-full absolute duration-500 bottom-0 z-50 flex flex-col items-center md:pt-20 md:gap-10 p-10
+      className={`${bgColor} bg-opacity-70 backdrop-blur-md  w-full h-full absolute duration-500 bottom-0 z-50 flex flex-col
+       items-center md:pt-20 md:gap-10 p-10 pt-20
        text-white ${
          isMenuOpen ? "left-0" : "-left-[100%]"
        }`}
