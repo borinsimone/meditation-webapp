@@ -3,16 +3,18 @@ import React, {
   useEffect,
   useContext,
   useRef,
-} from "react";
+  useCallback,
+  useMemo,
+} from 'react';
 
 const GlobalContext = React.createContext();
 
 const ContextProvider = ({ children }) => {
   //MENU CONTEXT
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const toggleMenu = () => {
+  const toggleMenu = useCallback(() => {
     setIsMenuOpen(!isMenuOpen);
-  };
+  }, [isMenuOpen]);
 
   //MEDITATION CONTEXT
   const [isTimerOpen, setIsTimerOpen] = useState(false);
@@ -21,16 +23,16 @@ const ContextProvider = ({ children }) => {
 
   // BACKGROUND & VOLUME CONTEXT
   const [background, setBackground] = useState(() => {
-    const data = localStorage.getItem("background");
+    const data = localStorage.getItem('background');
     if (data !== null) {
       return data;
     } else {
-      return "beach";
+      return 'beach';
     }
   });
 
   const [bgSoundVolume, setBgSoundVolume] = useState(() => {
-    const data = localStorage.getItem("bgSoundVolume");
+    const data = localStorage.getItem('bgSoundVolume');
     if (data !== null) {
       const parsedData = JSON.parse(data);
       return parsedData;
@@ -39,10 +41,10 @@ const ContextProvider = ({ children }) => {
     }
   });
   useEffect(() => {
-    localStorage.setItem("bgSoundVolume", bgSoundVolume);
+    localStorage.setItem('bgSoundVolume', bgSoundVolume);
   }, [bgSoundVolume]);
   const [isMuted, setIsMuted] = useState(() => {
-    const data = localStorage.getItem("isMuted");
+    const data = localStorage.getItem('isMuted');
     if (data !== null) {
       const parsedData = JSON.parse(data);
       return parsedData;
@@ -51,10 +53,7 @@ const ContextProvider = ({ children }) => {
     }
   });
   useEffect(() => {
-    localStorage.setItem(
-      "isMuted",
-      JSON.stringify(isMuted)
-    );
+    localStorage.setItem('isMuted', JSON.stringify(isMuted));
   }, [isMuted]);
 
   const [isBgRelated, setIsBgRelated] = useState(true);
@@ -63,36 +62,48 @@ const ContextProvider = ({ children }) => {
 
   const [isLandingOpen, setIsLandingOpen] = useState(true);
 
-  let rainColor = "bg-slate-600";
-  let beachColor = "bg-[#FA9A50]";
-  let bgColor =
-    background === "rain" ? rainColor : beachColor;
+  let rainColor = 'bg-slate-600';
+  let beachColor = 'bg-[#FA9A50]';
+  let bgColor = background === 'rain' ? rainColor : beachColor;
+
+  const contextValue = useMemo(
+    () => ({
+      isMenuOpen,
+      setIsMenuOpen,
+      toggleMenu,
+      isTimerOpen,
+      setIsTimerOpen,
+      background,
+      setBackground,
+      timerOn,
+      setTimerOn,
+      bgSoundVolume,
+      setBgSoundVolume,
+      isBgRelated,
+      setIsBgRelated,
+      isMuted,
+      setIsMuted,
+      isLandingOpen,
+      setIsLandingOpen,
+      bgSound,
+      bgColor,
+    }),
+    [
+      isMenuOpen,
+      isTimerOpen,
+      background,
+      timerOn,
+      bgSoundVolume,
+      isBgRelated,
+      isMuted,
+      isLandingOpen,
+      bgColor,
+      toggleMenu,
+    ]
+  );
 
   return (
-    <GlobalContext.Provider
-      value={{
-        isMenuOpen,
-        setIsMenuOpen,
-        toggleMenu,
-        isTimerOpen,
-        setIsTimerOpen,
-        background,
-        setBackground,
-        timerOn,
-        setTimerOn,
-
-        bgSoundVolume,
-        setBgSoundVolume,
-        isBgRelated,
-        setIsBgRelated,
-        isMuted,
-        setIsMuted,
-        isLandingOpen,
-        setIsLandingOpen,
-        bgSound,
-        bgColor,
-      }}
-    >
+    <GlobalContext.Provider value={contextValue}>
       {children}
     </GlobalContext.Provider>
   );
